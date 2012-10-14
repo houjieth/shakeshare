@@ -1,0 +1,35 @@
+All these data models will be stored in our database.
+
+// File is used to represent a single file, either a photo or video, either being uploaded or downloaded
+File:
+    session_id
+    name // filename
+    size // if file is too big, we need to resize it
+    thumb // thumbnail picture
+    path // path to the actual file on server's file system
+
+// Photo is an extension of File
+Photo: File
+
+// Video is an extension of File
+Video: File
+
+// Session is used to represent a session between a user, either a uploader or a download, and our server
+Session:
+    id // unique id
+    File[] // each session contains a bunch of files
+    create_time
+    expire_time
+
+// Shake is used to represent a phone shake of either a uploader or a downloader
+Shake:
+    session_id // points to the session that creates this shake
+    type // downloader or uploader
+    time
+    location
+    accel_sig // acceleration data signature
+
+
+Based on the model above, the connection between the uploader and downloader is just a matter of a matching between two Shake objects.
+
+Another interesting thought is RESHAKE, by which I mean we can swap the uploader and downloader without recreating new sessions. That's why I didn't add type in Session but I added it in Shake. Personally I think there is still a lot things we can do after the share is completed, such as share back some other files, or even upload in SNS if possible?

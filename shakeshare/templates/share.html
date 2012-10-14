@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shakeshare - Share</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script src="/static/js/jquery.ajaxfileupload.js"></script>
+	<link rel="stylesheet" href="/static/css/style.css" />
+	<script type="text/javascript">
+	$(document).ready(function() {
+		// have to run it first... don't understand why
+		$("#file-upload").ajaxfileupload({
+			  'action': '../upload/',
+			  //'params': {
+				//'extra': 'info'
+			  //},
+			  'onComplete': function(response) {
+				console.log('custom handler for file:');
+				alert(JSON.stringify(response));
+			  },
+			  //'onStart': function() {
+				//if(weWantedTo) return false; // cancels upload
+			  //},
+			  'onCancel': function() {
+				console.log('no file selected');
+			  }
+			});
+			
+		$("#file-upload").change(function() {
+			alert("changed");
+			$("#file-upload").ajaxfileupload({
+			  'action': '../upload/',
+			  //'params': {
+				//'extra': 'info'
+			  //},
+			  'onComplete': function(response) {
+				console.log('custom handler for file:');
+				alert(JSON.stringify(response));
+			  },
+			  //'onStart': function() {
+				//if(weWantedTo) return false; // cancels upload
+			  //},
+			  'onCancel': function() {
+				console.log('no file selected');
+			  }
+			});
+    	});
+    	
+    	$("#file-upload-wrapper").click(function(event){
+        	$("#file-upload").trigger('click');
+    	});
+	});
+
+	</script>
+</head>
+<body>
+<div data-role="page" data-theme="c" style="width:100%;">	
+	<div data-role="content">
+		<h1 class="aligncenter">ShakeShare.</h1>
+		<p class="aligncenter">App-free, cross-platform file sharing.</p>
+		<hr/>
+		<form id="main-form" method="post" action="../upload/" enctype="multipart/form-data"  data-ajax="false" name="uploadPhoto">
+			<div id="result"></div>
+			<div id="file-upload-wrapper">
+				<div class="upload-sign ui-btn-corner-all"><span>+</span></div>
+			</div>
+			<div class="hidden"><input id= "file-upload" type="file" name="file"></div>
+			<input type="submit" name="submit-form" value="Submit" />
+		</form>
+	</div>
+</div>
+</body>
+</html>
