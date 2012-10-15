@@ -5,7 +5,7 @@ File:
     session_id
     name // filename
     size // if file is too big, we need to resize it
-    thumb // thumbnail picture
+    thumb_path // thumbnail picture
     path // path to the actual file on server's file system
 
 // Photo is an extension of File
@@ -17,7 +17,6 @@ Video: File
 // Session is used to represent a session between a user, either a uploader or a download, and our server
 Session:
     id // unique id
-    File[] // each session contains a bunch of files
     create_time
     expire_time
 

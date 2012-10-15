@@ -19,6 +19,10 @@
 	overflow: hidden;
 }
 
+#file-upload-wrapper{
+	display: inline-block;
+}
+
 #file-upload-wrapper .upload-sign {
 	padding: .4em 1em;
 	border: 3px solid #333;
