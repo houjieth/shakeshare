@@ -9,6 +9,7 @@
 */
 
 /* custom */
+
 .aligncenter {
 	text-align:center;
 }
@@ -19,18 +20,55 @@
 	overflow: hidden;
 }
 
-#file-upload-wrapper{
+#file-upload-wrapper, #result{
 	display: inline-block;
 }
 
-#file-upload-wrapper .upload-sign {
-	padding: .4em 1em;
-	border: 3px solid #333;
+.upload-sign, .upload-result, .loader {
+	border: 2px solid #333;
+	border-radius: .4em;
 	background: #fff;
 	display: inline-block;
+	margin-right: .4em;
+	vertical-align:middle;
+	overflow: hidden;
 }
 
-#file-upload-wrapper .upload-sign span {
+.upload-sign{
+	height: 3em;
+	width: 3em;
+	padding: .6em;
+}
+
+.upload-result{
+	height: 4.2em;
+	width: 4.2em;
+	padding:0;
+	position:relative;
+}
+
+.upload-result .loader{
+	position: absolute;
+	top:0;
+	left:0;
+	z-index:950;
+	height: 4.2em;
+	width: 4.2em;
+	border-radius: .4em;
+	background: black;
+	opacity: .6;
+}
+
+.upload-result .loader span{
+	z-index:990;
+}
+
+.upload-result img{
+	Xmax-width:4.2em;
+	Xmax-height:4.2em;
+}
+
+.upload-sign span {
 	font-size: 3em;
 }
 

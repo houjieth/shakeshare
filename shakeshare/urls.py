@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     #url(r'^hello/$', 'shakeshare.views.hello', name='hello'),
     (r'^shakeshare/$', 'shakeshare.views.landing'),
     (r'^shakeshare/share/$', 'shakeshare.views.share'),
-    (r'^shakeshare/upload/$', 'shakeshare.views.upload'),
+    (r'^shakeshare/upload/.*$', 'shakeshare.views.upload'),
 
     (r'^hello/$', 'shakeshare.views.hello'),
 )

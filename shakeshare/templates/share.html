@@ -4,66 +4,81 @@
 	<title>Shakeshare - Share</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>	
-	<!--<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>-->
-	<script src="/static/js/jquery.ajaxfileupload.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script src="/static/js/jquery.fitImageToContainer.min.js"></script>
 	<link rel="stylesheet" href="/static/css/style.css" />
 </head>
 <body class="ui-mobile-viewport ui-overlay-c">
 <div data-theme="c" style="width:100%; display:block;" class="ui-page ui-body-c ui-page-active">	
 	<div data-role="content" class="ui-content">
 		<script type="text/javascript">
+			var ajaxloader = "<div class='loader'><span class='ui-icon ui-icon-loading'></span></div>"
+			
+			$(document).ready(function() {
+  				$.ajaxSetup({ cache: false });
+			});
+			
 			// handles AJAX file upload
-			 $(document).ready(function() {
+			function handleFiles(files) { //html5 file object
+				var timeStamp = new Date().getTime(); // bypass iOS 6 Ajax cache, also use as unique ID for img to communicate between server and browser
+				var file = files[0]; // currently supports single file only
+				var imageType = /image.*/;
 				
-				$("#file-upload").change(function() {
-					var formData = new FormData($('#main-form')[0]); //jQuery object is an array object
-					$.ajax({
-						url: '../upload/',  //server script to process data
-						type: 'POST',
-						xhr: function() {  // custom xhr
-							myXhr = $.ajaxSettings.xhr();
-							if(myXhr.upload){ // check if upload property exists
-								//myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // for handling the progress of the upload
-							}
-							return myXhr;
-						},
-						//Ajax events
-						//beforeSend: beforeSendHandler,
-						success: function(data) {
-							$('#result').html(data);
-							alert('upload was performed.');
-						  },
-						error: function(data) {
-							$('#result').html(data);
-							alert('upload was performed.');
-						  },
-						// Form data
-						data: formData,
-						//Options to tell JQuery not to process data or worry about content-type
-						cache: false,
-						contentType: false,
-						processData: false
-					});
-					
-					
-					/*$("#result").html("Uploading...");
-					$("#file-upload").ajaxfileupload({
-					  'action': '../upload/',
-					  //'params': {
-						//'extra': 'info'
-					  //},
-					  'onComplete': function(response) {
-						console.log('custom handler for file:');
-						$("#result").html(JSON.stringify(response));
-					  },
-					  'onStart': function() {
-						console.log('on start');
-					  },
-					  'onCancel': function() {
-						console.log('no file selected');
-					  }
-					});*/
+				// preview image
+				
+				var insertContent = "<div class='upload-result pop in' id='img"+ timeStamp + "'>"+ ajaxloader +"</div>";
+				$(insertContent).insertBefore(".upload-sign");
+				
+				var img = document.createElement("img");
+				img.classList.add("obj");
+				img.file = file;
+				$("#img"+ timeStamp).append(img);
+						
+				var reader = new FileReader();
+				reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+				reader.readAsDataURL(file);
+				
+				//resize image
+				$("#img" + timeStamp).fitImageToContainer({
+					fit: true
+					//complete: function(element) {}
 				});
+				
+				
+				var formData = new FormData($('#main-form')[0]); //jQuery object is an array object
+				$.ajax({
+					url: '../upload/' + timeStamp,  // add timestampe to URL to disable iOS6 cache
+					cache: false,
+					type: 'POST',
+					xhr: function() {  // custom xhr
+						myXhr = $.ajaxSettings.xhr();
+						if(myXhr.upload){ // check if upload property exists
+							//myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // for handling the progress of the upload
+						}
+						return myXhr;
+					},
+					//Ajax events
+					beforeSend: function() {
+						//alert('upload prepared.');
+					  },
+					success: function(data) {
+						//alert('upload was performed.');
+						$("#img"+ data + " .loader").fadeOut(200);
+						console.log(data);
+					  },
+					error: function() {
+						
+					  },
+					// Form data
+					data: formData,
+					//Options to tell JQuery not to process data or worry about content-type
+					cache: false,
+					contentType: false,
+					processData: false
+				});
+			}
+			
+			 $(document).ready(function() {				
 					
 				$("#file-upload-wrapper").click(function(event){
 					// stop jQuery mobile handles this click
@@ -75,24 +90,25 @@
 				});
 				
 			});
+			
 			</script>
 		<h1 class="aligncenter">ShakeShare.</h1>
 		<p class="aligncenter">App-free, cross-platform file sharing.</p>
 		<hr/>
+		<span>Add files to share</span>
 		<form id="main-form" method="post" action="../upload/" enctype="multipart/form-data"  data-ajax="false" name="uploadPhoto">
 			<div id="result"></div>
-			<a id="file-upload-wrapper" herf="#" data-role="button">
-				<div class="upload-sign ui-btn-corner-all"><span>+</span></div>
+			<a id="file-upload-wrapper" herf="#">
+				<div class="upload-sign"><span>+</span></div>
 			</a>
 			<div class="hidden">
-				<input id= "file-upload" type="file" name="file">
+				<input id= "file-upload" type="file" name="file" onchange="handleFiles(this.files)">
 				<input type="hidden" name="current-session-id" value="{{ session_id }}" />
 				<input type="submit" name="submit-form" value="Submit" />
 			</div>
 		</form>
+		<hr/>
 	</div>
-	<!-- animated loader placeholder-->
-	<div style="display:none;" class="ui-loader ui-corner-all ui-body-a ui-loader-default"><span class="ui-icon ui-icon-loading"></span><h1>loading</h1></div>
 </div>
 </body>
 </html>

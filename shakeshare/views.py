@@ -5,6 +5,8 @@ from file_tools import handle_upload_file
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from datetime import datetime
 from datetime import timedelta
+from django.views.decorators.cache import never_cache
+from string import split
 
 from shakeshare.models import Session
 from shakeshare.models import File
@@ -29,10 +31,12 @@ def share(request):
     return HttpResponse(html)
 
 @csrf_exempt
+@never_cache
 def upload(request):
+    timestamp = request.path.split('/')[-1]
     if request.method == 'POST':
         session_id = request.POST['current-session-id']
         handle_upload_file(session_id, request.FILES['file'])
-        #return HttpResponse("upload succeed")
-        return HttpResponse(session_id)
-    return HttpResponse("upload failed")
+        return HttpResponse(timestamp)
+    #return HttpResponse("upload failed")
+    return HttpResponse(timestamp)
