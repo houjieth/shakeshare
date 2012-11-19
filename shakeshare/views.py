@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from django.template import Context
 from file_tools import handle_upload_file
+from matching_tools import find_matching_shakes_by_time
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from datetime import datetime
 from datetime import timedelta
@@ -10,6 +11,7 @@ from string import split
 
 from shakeshare.models import Session
 from shakeshare.models import File
+from shakeshare.models import Shake
 
 def hello(request):
     return HttpResponse("Hello world")
@@ -40,3 +42,13 @@ def upload(request):
         return HttpResponse(timestamp)
     #return HttpResponse("upload failed")
     return HttpResponse(timestamp)
+
+def shake(request):
+# dummy impl
+    shake = Shake.objects.get(session_id=10)
+    str = "original shake: " + unicode(shake) 
+    str += " matching shake(s): "
+    matching_shakes = find_matching_shakes_by_time(shake)
+    for s in matching_shakes:
+        str += unicode(s) + ' '
+    return HttpResponse(str)

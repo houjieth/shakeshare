@@ -17,3 +17,10 @@ class File(models.Model):
     def __unicode__(self):
         return "name: " + self.name + ", path: " + self.path + ", session_id: " + unicode(self.session_id.id)
 
+class Shake(models.Model):
+    session_id = models.ForeignKey(Session)
+    is_uploader = models.BooleanField()
+    time = models.DateTimeField()
+
+    def __unicode__(self):
+        return "time: " + unicode(self.time) + ", is_uploader: " + unicode(self.is_uploader) + ", session_id: " + unicode(self.session_id.id)
