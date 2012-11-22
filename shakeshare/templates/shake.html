@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shakeshare - Shake</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script src="/static/js/jquery.fitImageToContainer.min.js"></script>
+	<link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="ui-mobile-viewport ui-overlay-c">
+<div data-theme="c" style="width:100%; display:block;" class="ui-page ui-body-c ui-page-active">	
+	<div data-role="content" class="ui-content">
+		<h1 id = "lets-shake" class="aligncenter">Ready? Let's Shake!</h1>
+		<p id= "lets-shake-subtitle" class="aligncenter">Shake your phone together with your friends!</p>
+	</div>
+	<script>
+	
+		var timeStamp = new Date().getTime();
+		
+		var alreadyShaked = false;
+		
+		var timeInterval = 50;
+		var mod = 0;
+		
+		
+		if (window.DeviceMotionEvent) {
+		  window.addEventListener('devicemotion', deviceMotionHandler, false);
+		} else {
+		  document.getElementById("lets-shake").innerHTML = "Sorry, motion detection is not supported on your device."
+		}
+		
+		function deviceMotionHandler(eventData) {
+		  
+		  // Grab the acceleration including gravity from the results
+		  var acceleration = eventData.acceleration;
+		
+		  // calculate the acceleration data
+		  var rawAccelerationx = Math.round(acceleration.x);
+		  var rawAccelerationy = Math.round(acceleration.y); 
+		  var rawAccelerationz = Math.round(acceleration.z);
+		  // detect shake
+          mod = Math.round(Math.sqrt(
+					  Math.pow(rawAccelerationx,2)+Math.pow(rawAccelerationy,2)+Math.pow(rawAccelerationz,2)
+					  ));
+		     
+		}
+		
+		
+		function detectShake (){
+			if( mod > 35 && alreadyShaked == false) {
+				alreadyShaked = true;
+				$("#lets-shake").html("Working...");
+				$("#lets-shake-subtitle").html("");
+				var shakeTime = new Date().getTime();
+				
+				$.ajax({
+					url: '../match&timestamp=' + timeStamp,  // add timestampe to URL to disable iOS6 cache
+					cache: false,
+					type: 'POST',
+					xhr: function() {  // custom xhr
+						myXhr = $.ajaxSettings.xhr();
+						if(myXhr.upload){ // check if upload property exists
+							//myXhr.upload.addEventListener('progress',progressHandlingFunction, false); // for handling the progress of the upload
+						}
+						return myXhr;
+					},
+					//Ajax events
+					beforeSend: function() {
+						//alert('upload prepared.');
+					  },
+					success: function(data) {
+						//alert('upload was performed.');
+						$("#lets-shake").html("Success!");
+						console.log(data);
+					  },
+					error: function (xhr, ajaxOptions, thrownError) {
+        				alert(xhr.status);
+        				alert(thrownError);
+        			},
+					// Form data
+					data: {
+						session_id: "{{ session_id}}",
+						is_uploader: "{{ is_uploader }}",
+						time: shakeTime
+						},
+					//Options to tell JQuery not to process data or worry about content-type
+					cache: false,
+					contentType: false,
+					processData: false
+				});
+				
+			} 
+		}
+		
+		var interval = self.setInterval('detectShake()', timeInterval); 
+		
+		</script>
+</div>
+</body>
+</html>
+
