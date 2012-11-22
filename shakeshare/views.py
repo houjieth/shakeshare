@@ -44,11 +44,31 @@ def upload(request):
     return HttpResponse(timestamp)
 
 def shake(request):
-# dummy impl
+    '''
+    # dummy impl
     shake = Shake.objects.get(session_id=10)
     str = "original shake: " + unicode(shake) 
     str += " matching shake(s): "
     matching_shakes = find_matching_shakes_by_time(shake)
     for s in matching_shakes:
         str += unicode(s) + ' '
-    return HttpResponse(str)
+    '''
+
+    session_id = request.GET.get('sessionid', 'null')
+    is_uploader = request.GET.get('is_uploader', 'null')
+    t = get_template('shake.html')
+
+    # If we are entering '/shake' from a existing uploading session
+    #   since there is already a session, we don't need to create a new one
+    # If we are entering '/shake' by clicking the shake button
+    #   then weneed to create a new session
+    if session_id is 'null': 
+        ctime = datetime.now()
+        etime = ctime + timedelta(hours=3) 
+        session = Session(create_time = ctime, expire_time = etime)
+        session.save()
+        session_id = session.id
+
+    c = Context({'session_id':session_id}, {'is_uploader':is_uploader})
+    return HttpResponse(t.render(c))
+
