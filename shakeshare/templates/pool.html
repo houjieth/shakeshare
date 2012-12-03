@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shakeshare - Share</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>	
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script src="/static/js/jquery.fitImageToContainer.min.js"></script>
+	<link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="ui-mobile-viewport ui-overlay-c">
+<div data-theme="c" style="width:100%; display:block;" class="ui-page ui-body-c ui-page-active">	
+	<div data-role="content" class="ui-content">
+		<script type="text/javascript">
+		</script>
+		<h1 class="aligncenter">Feeling Good?</h1>
+		<p class="aligncenter"><b>ShakeShare</b> makes sharing easy. No apps, no cross-platform hassles.</p>
+		<hr/>
+		<p>{{ fileCount }} photos shared with you. Tap thumbnail to save.</p>
+		<div id="result"></div>
+		<a id="file-upload-wrapper" herf="#">
+			{% for fileId in fileIds %}
+    		<div class='upload-result pop in'>
+    			<div class="loader" style="display: none;"><span class="ui-icon ui-icon-loading"></span></div>
+    			<a href="/shakeshare/file?id={{fileId}}" rel="external"><img class="share-result" src="/shakeshare/file?id={{ fileId }}"/></a>
+    		</div>
+			{% endfor %}
+		</a>
+		<hr/>
+		<p class="aligncenter">Then tell your friends to visit <br/><strong>shakeshare.net</strong></p>
+		<a id="proceed" href="" data-role="button" data-icon="arrow-r" data-iconpos="right">I also want to share</a>
+		
+		<script type="text/javascript">
+			$(".share-result").load(function(){
+				//resize image
+				console.log("load triggered");
+				$(this).fitImageToContainer({
+					fit: true
+					//complete: function(element) {console.log("fit performed.");}
+				});
+			});
+		</script>
+	</div>
+</div>
+</body>
+</html>

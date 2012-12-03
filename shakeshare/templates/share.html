@@ -13,19 +13,31 @@
 	<div data-role="content" class="ui-content">
 		<script type="text/javascript">
 			var ajaxloader = "<div class='loader'><span class='ui-icon ui-icon-loading'></span></div>"
+			fileProcessQueue = 100; // determine if there are still files uploading
+			console.log (fileProcessQueue + "initial value");
 			
 			$(document).ready(function() {
   				$.ajaxSetup({ cache: false });
+  				$("#file-upload-wrapper").click(function(event){
+					// stop jQuery mobile handles this click
+					//alert("wrapper click event triggered");
+					event.preventDefault();
+					//$("#result").html("wrapper click event triggered");
+					$("#file-upload").trigger('click');
+					return false;
+				});
 			});
 			
 			// handles AJAX file upload
 			function handleFiles(files) { //html5 file object
+				fileProcessQueue++;
+				console.log (fileProcessQueue + "start handle file");
+				proceedButtonCheck (false);
 				var timeStamp = new Date().getTime(); // bypass iOS 6 Ajax cache, also use as unique ID for img to communicate between server and browser
 				var file = files[0]; // currently supports single file only
 				var imageType = /image.*/;
 				
 				// preview image
-				
 				var insertContent = "<div class='upload-result pop in' id='img"+ timeStamp + "'>"+ ajaxloader +"</div>";
 				$(insertContent).insertBefore(".upload-sign");
 				
@@ -60,15 +72,22 @@
 					//Ajax events
 					beforeSend: function() {
 						//alert('upload prepared.');
-					  },
+					},
 					success: function(data) {
 						//alert('upload was performed.');
 						$("#img"+ data + " .loader").fadeOut(200);
 						console.log(data);
-					  },
-					error: function() {
+						console.log (fileProcessQueue + "before success");
+						fileProcessQueue--;
+						console.log (fileProcessQueue + "success");
+						proceedButtonCheck (true);
 						
-					  },
+					},
+					error: function() {
+						fileProcessQueue--;
+						proceedButtonCheck (true);
+						console.log (fileProcessQueue + "error");
+					},
 					// Form data
 					data: formData,
 					//Options to tell JQuery not to process data or worry about content-type
@@ -78,20 +97,21 @@
 				});
 			}
 			
-			 $(document).ready(function() {				
-					
-				$("#file-upload-wrapper").click(function(event){
-					// stop jQuery mobile handles this click
-					//alert("wrapper click event triggered");
-					event.preventDefault();
-					//$("#result").html("wrapper click event triggered");
-					$("#file-upload").trigger('click');
-					return false;
-				});
-				
-			});
+			// set status of proceed button
+			function proceedButtonCheck (enableStatusRequest){
+				console.log (fileProcessQueue + "received by function");
+				// only if no file is in queue and enable request is sent
+				if (fileProcessQueue = 0 && enableStatusRequest== true){
+					$("#proceed-to-shake").removeClass('ui-disabled');
+				}
+			 	else {
+			 		// temp disable
+			 		$("#proceed-to-shake").removeClass('ui-disabled');
+			 	}
+			}
 			
-			</script>
+			
+		</script>
 		<h1 class="aligncenter">ShakeShare.</h1>
 		<p class="aligncenter">App-free, cross-platform file sharing.</p>
 		<hr/>
@@ -109,7 +129,7 @@
 		</form>
 		<hr/>
 		<p class="aligncenter">Then tell your friends to visit <br/><strong>shakeshare.net</strong></p>
-		<a href="/shakeshare/shake?sessionid={{ session_id }}&is_uploader=1" data-role="button" data-icon="arrow-r" data-iconpos="right">Done! What's Next?</a>
+		<a id="proceed-to-shake" class="ui-disabled" href="/shakeshare/shake?sessionid={{ session_id }}&is_uploader=true" data-role="button" data-icon="arrow-r" data-iconpos="right">Done! What's Next?</a>
 	</div>
 </div>
 </body>

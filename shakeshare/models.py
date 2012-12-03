@@ -15,7 +15,7 @@ class File(models.Model):
     thumb_path = models.CharField(max_length=100)
 
     def __unicode__(self):
-        return "name: " + self.name + ", path: " + self.path + ", session_id: " + unicode(self.session_id.id)
+        return "name: " + self.name + ", path: " + self.path + ", session_id: " + unicode(self.session_id.id) + ", file_id:" + unicode(self.id)
 
 class Shake(models.Model):
     session_id = models.ForeignKey(Session)
@@ -24,3 +24,9 @@ class Shake(models.Model):
 
     def __unicode__(self):
         return "time: " + unicode(self.time) + ", is_uploader: " + unicode(self.is_uploader) + ", session_id: " + unicode(self.session_id.id)
+
+class Match(models.Model):
+    file_id_list = models.TextField(null=True)
+
+    def __unicode__(self):
+        return "file_list: " + unicode(self.file_id_list) + ", match_id: :" + unicode(self.id)

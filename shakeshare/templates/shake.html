@@ -14,49 +14,65 @@
 	<div data-role="content" class="ui-content">
 		<h1 id = "lets-shake" class="aligncenter">Ready? Let's Shake!</h1>
 		<p id= "lets-shake-subtitle" class="aligncenter">Shake your phone together with your friends!</p>
+		<!-- hidden form to submit data, avoid JSON communication -->
+		<form id="shake-detect-form" method="post" enctype="multipart/form-data"  data-ajax="false" action="/shakeshare/match">
+			<input type="hidden" name="session_id" value = "{{ session_id }}"/>
+			<input type="hidden" name="is_uploader" value = "{{ is_uploader }}"/>
+			<!-- value to be filled by JS when shake is detected -->
+			<input id="shake-time" type="hidden" name="time" value = ""/>
+			<!--<input type="submit" style="display:none;" value="PurePost" />-->
+		</form>
+		<a id="simulate-shake" href="javascript: detectShake(true);" data-role="button">SimulateAJAX</a>
 	</div>
 	<script>
 	
-		var timeStamp = new Date().getTime();
-		
+		var timeStamp = new Date().getTime().toString();
+		timeStamp = timeStamp.substring(0, timeStamp.length - 3);	
+
 		var alreadyShaked = false;
 		
 		var timeInterval = 50;
 		var mod = 0;
 		
-		
+		// browser compatibility check
 		if (window.DeviceMotionEvent) {
-		  window.addEventListener('devicemotion', deviceMotionHandler, false);
+		  	window.addEventListener('devicemotion', deviceMotionHandler, false);
 		} else {
-		  document.getElementById("lets-shake").innerHTML = "Sorry, motion detection is not supported on your device."
+			// if not, provide alternative ways
+		  	document.getElementById("lets-shake").innerHTML = "Sorry, motion detection is not supported on your device."
+		  	$("#lets-shake-subtitle").html("If you still want to shake/receive file, click the button while others are shaking their phones.")
+		  	$("#simulate-shake").fadeIn(300);
 		}
 		
+		// shake listener
 		function deviceMotionHandler(eventData) {
-		  
 		  // Grab the acceleration including gravity from the results
 		  var acceleration = eventData.acceleration;
-		
 		  // calculate the acceleration data
 		  var rawAccelerationx = Math.round(acceleration.x);
 		  var rawAccelerationy = Math.round(acceleration.y); 
 		  var rawAccelerationz = Math.round(acceleration.z);
-		  // detect shake
+		  // detect shake pattern
           mod = Math.round(Math.sqrt(
 					  Math.pow(rawAccelerationx,2)+Math.pow(rawAccelerationy,2)+Math.pow(rawAccelerationz,2)
 					  ));
-		     
 		}
 		
-		
-		function detectShake (){
-			if( mod > 35 && alreadyShaked == false) {
+		// check shake, and send to server
+		function detectShake (simulateShake){
+			if( (mod > 25 && alreadyShaked == false) || simulateShake == true) {
 				alreadyShaked = true;
 				$("#lets-shake").html("Working...");
 				$("#lets-shake-subtitle").html("");
-				var shakeTime = new Date().getTime();
+				
+				var shakeTime = new Date().getTime().toString();
+				shakeTime = shakeTime.substring(0, shakeTime.length - 3);
+				$("#shake-time").val(shakeTime);
+				
+				var formData = new FormData($('#shake-detect-form')[0]);
 				
 				$.ajax({
-					url: '../match&timestamp=' + timeStamp,  // add timestampe to URL to disable iOS6 cache
+					url: '/shakeshare/match?timestamp=' + timeStamp,  // add timestampe to URL to disable iOS6 cache
 					cache: false,
 					type: 'POST',
 					xhr: function() {  // custom xhr
@@ -73,18 +89,23 @@
 					success: function(data) {
 						//alert('upload was performed.');
 						$("#lets-shake").html("Success!");
-						console.log(data);
+						alert ("success" + data);
+						// go to new URL
+						window.location = "/shakeshare/pool?match_id=" + data;
 					  },
-					error: function (xhr, ajaxOptions, thrownError) {
-        				alert(xhr.status);
-        				alert(thrownError);
+					timeout: 100000,
+					error: function (xhr, status, message) {
+						// handle timeout
+						if(status=="timeout") {
+            				alert("got timeout");
+            				handleError ("timeout");
+        				} else {
+        					alert(xhr.status + "xhr");
+        					alert(message + "message");
+        				}
         			},
 					// Form data
-					data: {
-						session_id: "{{ session_id}}",
-						is_uploader: "{{ is_uploader }}",
-						time: shakeTime
-						},
+					data: formData,
 					//Options to tell JQuery not to process data or worry about content-type
 					cache: false,
 					contentType: false,
@@ -92,6 +113,14 @@
 				});
 				
 			} 
+		}
+		
+		function handleError (status){
+			if (status == "timeout"){
+			}
+			else {
+			
+			}
 		}
 		
 		var interval = self.setInterval('detectShake()', timeInterval); 
