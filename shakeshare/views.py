@@ -74,18 +74,21 @@ def shake(request):
 @csrf_exempt
 def match(request):
     session_id = request.POST['session_id']
-    logger.info('session_id: ' + session_id)
-    print "session_id: " + session_id
+    print "in match, session_id: " + session_id
     is_uploader = request.POST['is_uploader']
-    print "is_uploader: " + is_uploader
     time = request.POST['time']
-    print "time: " + time
+    print "in match, received shaketime: " + time
     # Every time we shake, we create a shake object
     shake = Shake()
     shake.session_id = Session.objects.get(id=session_id)
-    shake.is_uploader = is_uploader
+    if is_uploader == 'true':
+        shake.is_uploader = True
+    else:
+        shake.is_uploader = False
     shake.time = datetime.fromtimestamp(float(time))
     shake.save()
+    print "in match, is_uploader: " + unicode(shake.is_uploader)
+    print "just created a new shake, id: " + unicode(shake.id)
 
     # Due to difference in network conditions, some shake may arrive late
     # So we have to wait for a while before we search for other shakes.
@@ -98,14 +101,14 @@ def match(request):
     while wait_time_total < 7:
         sleep(wait_time)
         matching_shakes = find_matching_shakes_by_time(shake)
-        print ">> matching_shakes count: " + unicode(len(matching_shakes))  
+        print ">> Shake " + unicode(shake.id) + " matching_shakes count: " + unicode(len(matching_shakes))  
         file_id_list = []
         for matching_shake in matching_shakes:
             if matching_shake.is_uploader is True:
                 uploader_session_id = matching_shake.session_id
                 files = list(File.objects.filter(
                             session_id=uploader_session_id))
-                print ">> files count: " + unicode(len(files))  
+                print ">> matching uploader shake " + unicode(matching_shake.id) + " files count: " + unicode(len(files))  
                 for f in files:
                     file_id_list.append(f.id)
         if len(file_id_list) > 0: # uploader found, ready to return
@@ -149,3 +152,9 @@ def file(request):
     response['Content-Disposition'] = 'attachment; filename="' + f.name + '"'
 
     return response
+
+def synctime(request):
+    ctime = datetime.now()
+
+    return HttpResponse(ctime.strftime("%s"))
+

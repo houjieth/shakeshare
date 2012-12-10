@@ -12,8 +12,11 @@
 <body class="ui-mobile-viewport ui-overlay-c">
 <div data-theme="c" style="width:100%; display:block;" class="ui-page ui-body-c ui-page-active">	
 	<div data-role="content" class="ui-content">
-		<h1 id = "lets-shake" class="aligncenter">Ready? Let's Shake!</h1>
-		<p id= "lets-shake-subtitle" class="aligncenter">Shake your phone together with your friends!</p>
+		<div id="shake-info">
+			<h1 id = "lets-shake" class="aligncenter">Ready? Let's Shake!</h1>
+			<p id= "lets-shake-subtitle" class="aligncenter">Shake your phone together with your friends!</p>
+			<p id= "lets-reshake" class="aligncenter">Shake with your friends again when ready.</p>
+		</div>
 		<!-- hidden form to submit data, avoid JSON communication -->
 		<form id="shake-detect-form" method="post" enctype="multipart/form-data"  data-ajax="false" action="/shakeshare/match">
 			<input type="hidden" name="session_id" value = "{{ session_id }}"/>
@@ -58,15 +61,70 @@
 					  ));
 		}
 		
+		function syncTime (shakeTime){
+			var localTimeBeforeSend;
+			var localTimeSuccess;
+			var serverTimeResponse;
+			var timeDifference;
+			var syncedTime;
+			
+			$.ajax({
+				url: '/shakeshare/synctime', 
+				cache: false,
+				type: 'GET',
+				async: false, // disable ajax due to time sync must be performed first
+				//Ajax events
+				beforeSend: function() {
+					// get local time stamp before send
+					localTimeBeforeSend = parseInt((new Date().getTime())/1000);
+					console.log ("local beforeSend time - " + localTimeBeforeSend);
+				 },
+				success: function(data) {
+					localTimeSuccess = parseInt((new Date().getTime())/1000);
+					console.log ("local received time - " + localTimeSuccess);
+					serverTimeResponse = parseInt(data);
+					console.log ("server respond time - " + data);
+					
+					// algrithm
+					timeDifference = (localTimeSuccess-localTimeBeforeSend)/2 + serverTimeResponse - localTimeSuccess;
+					console.log (timeDifference + " - time difference");
+					syncedTime = shakeTime + timeDifference;		
+					console.log (syncedTime + " - final synced time");
+					
+					// cannot return value in ajax call
+				  },
+				timeout: 10000,
+				error: function (xhr, status, message) {
+					// handle timeout
+					if(status=="timeout") {
+        				alert("sync time got timeout");
+        				handleError ("timeout");
+    				} else {
+    					alert(xhr.status + " - sync time xhr");
+    					alert(message + " - sync time message");
+    				}
+					syncedTime = shakeTime; // do not modify time
+    			},
+				//Options to tell JQuery not to process data or worry about content-type
+				cache: false,
+				contentType: false,
+				processData: false
+			});
+			console.log (syncedTime + " - returned time");
+			return syncedTime;
+		}
+		
 		// check shake, and send to server
 		function detectShake (simulateShake){
 			if( (mod > 25 && alreadyShaked == false) || simulateShake == true) {
-				alreadyShaked = true;
+				setAcceptShakeStatus(false);
+				console.log ("shake detected. alreadyShaked=" + alreadyShaked);
 				$("#lets-shake").html("Working...");
 				$("#lets-shake-subtitle").html("");
 				
-				var shakeTime = new Date().getTime().toString();
-				shakeTime = shakeTime.substring(0, shakeTime.length - 3);
+				var shakeTime = parseInt((new Date().getTime())/1000);
+				shakeTime = syncTime (shakeTime);
+				alert(shakeTime);
 				$("#shake-time").val(shakeTime);
 				
 				var formData = new FormData($('#shake-detect-form')[0]);
@@ -84,20 +142,26 @@
 					},
 					//Ajax events
 					beforeSend: function() {
-						//alert('upload prepared.');
 					  },
 					success: function(data) {
-						//alert('upload was performed.');
-						$("#lets-shake").html("Success!");
-						alert ("success" + data);
-						// go to new URL
-						window.location = "/shakeshare/pool?match_id=" + data;
+						console.log('shake: sever responded');
+						if (data == "match_not_found") {
+							$("#lets-shake").html("Oops!");
+							$("#lets-shake-subtitle").html("Looks like we can't find anyone shaking with you. Remember to shake together!");
+							setAcceptShakeStatus(true);
+						} 
+						else {
+							$("#lets-shake").html("Wooha!");
+							$("#lets-shake-subtitle").html("You and your friends are connected. We are working hard to create the photo pool!");
+							console.log ("success" + data);
+							// go to new URL
+							window.location = "/shakeshare/pool?match_id=" + data;
+						}
 					  },
-					timeout: 100000,
+					timeout: 10000,
 					error: function (xhr, status, message) {
 						// handle timeout
 						if(status=="timeout") {
-            				alert("got timeout");
             				handleError ("timeout");
         				} else {
         					alert(xhr.status + "xhr");
@@ -117,11 +181,33 @@
 		
 		function handleError (status){
 			if (status == "timeout"){
+				$("#lets-shake").html("Oops!");
+				$("#lets-shake-subtitle").html("Looks like there's a network problem. Maybe check your Internet connection and try again later?");
+				setAcceptShakeStatus(true);
+				console.log ("timeout detected. alreadyShaked=" + alreadyShaked);
 			}
 			else {
-			
+				$("#lets-shake").html("Ah, that sucks!");
+				$("#lets-shake-subtitle").html("Something is wrong. Please try again later!");
+				setAcceptShakeStatus(true); // enable reshake
+				console.log ("other error detected. alreadyShaked=" + alreadyShaked);
 			}
 		}
+		
+		function setAcceptShakeStatus(acceptShake){
+			if (acceptShake == true){
+				alreadyShaked = false; 
+				$("#lets-reshake").fadeIn(500);
+				console.log ("make it accept shake. alreadyShaked=" + alreadyShaked);
+			}
+			else {
+				alreadyShaked = true;
+				$("#lets-reshake").fadeOut(500);
+				console.log ("make it reject shake. alreadyShaked=" + alreadyShaked);
+			}
+			
+		}
+		
 		
 		var interval = self.setInterval('detectShake()', timeInterval); 
 		

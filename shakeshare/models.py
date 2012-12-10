@@ -21,9 +21,11 @@ class Shake(models.Model):
     session_id = models.ForeignKey(Session)
     is_uploader = models.BooleanField()
     time = models.DateTimeField()
+    latitude = models.FloatField(null=True)
+    logitude = models.FloatField(null=True);
 
     def __unicode__(self):
-        return "time: " + unicode(self.time) + ", is_uploader: " + unicode(self.is_uploader) + ", session_id: " + unicode(self.session_id.id)
+        return "time: " + unicode(self.time) + " ,latitude: " + unicode(self.latitude) + ", logitude: " + unicode(self.logitude) + ", is_uploader: " + unicode(self.is_uploader) + ", session_id: " + unicode(self.session_id.id) + ", id: " + unicode(self.id)
 
 class Match(models.Model):
     file_id_list = models.TextField(null=True)

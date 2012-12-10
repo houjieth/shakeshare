@@ -25,8 +25,8 @@
 }
 
 .upload-sign, .upload-result, .loader {
-	border: 2px solid #333;
-	border-radius: .4em;
+	border: 1px solid #333;
+	border-radius: .3em;
 	background: #fff;
 	display: inline-block;
 	margin-right: .4em;
@@ -73,6 +73,10 @@
 }
 
 #simulate-shake {
+	display: none;
+}
+
+#lets-reshake {
 	display: none;
 }
 
@@ -1071,9 +1075,9 @@ a.ui-link-inherit {
 	border-bottom-left-radius: 			1em /*{global-radii-buttons}*/;
 }
 .ui-btn-corner-all {
-	-moz-border-radius: 				1em /*{global-radii-buttons}*/;
-	-webkit-border-radius: 				1em /*{global-radii-buttons}*/;
-	border-radius: 						1em /*{global-radii-buttons}*/;
+	-moz-border-radius: 				.3em /*{global-radii-buttons}*/;
+	-webkit-border-radius: 				.3em /*{global-radii-buttons}*/;
+	border-radius: 						.3em /*{global-radii-buttons}*/;
 }
 /* radius clip workaround for cleaning up corner trapping */
 .ui-corner-tl,
