@@ -22,7 +22,8 @@ class Shake(models.Model):
     is_uploader = models.BooleanField()
     time = models.DateTimeField()
     latitude = models.FloatField(null=True)
-    logitude = models.FloatField(null=True);
+    logitude = models.FloatField(null=True)
+    accuracy = models.FloatField(null=True)
 
     def __unicode__(self):
         return "time: " + unicode(self.time) + " ,latitude: " + unicode(self.latitude) + ", logitude: " + unicode(self.logitude) + ", is_uploader: " + unicode(self.is_uploader) + ", session_id: " + unicode(self.session_id.id) + ", id: " + unicode(self.id)
