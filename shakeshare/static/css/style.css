@@ -14,6 +14,13 @@
 	text-align:center;
 }
 
+.indent-1{
+	text-indent: 2px;
+}
+
+.shakeshare-h1 {font-size: 1.5em; margin-top:.2em; margin-bottom: .2em;}
+.shakeshare-subtitle{margin-top: .2em;}
+
 .hidden {
 	width:0px;
 	height:0px;
@@ -25,24 +32,24 @@
 }
 
 .upload-sign, .upload-result, .loader {
-	border: 1px solid #333;
+	border: 1px solid #444;
 	border-radius: .3em;
 	background: #fff;
 	display: inline-block;
 	margin-right: .4em;
+	margin-bottom: .4em;
 	vertical-align:middle;
 	overflow: hidden;
 }
 
 .upload-sign{
-	height: 3em;
-	width: 3em;
-	padding: .6em;
+	height: 4em;
+	width: 4em;
 }
 
 .upload-result{
-	height: 4.2em;
-	width: 4.2em;
+	height: 4em;
+	width: 4em;
 	padding:0;
 	position:relative;
 }
@@ -52,15 +59,20 @@
 	top:0;
 	left:0;
 	z-index:950;
-	height: 4.2em;
-	width: 4.2em;
-	border-radius: .4em;
+	height: 4em;
+	width: 4em;
+	border-radius: .2em;
 	background: black;
-	opacity: .6;
+	opacity: .72;
 }
 
-.upload-result .loader span{
+.upload-result .loader span.shakeshare-loading{
 	z-index:990;
+	display: block;
+	width: 4em;
+	height: 4em;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .upload-result img{
@@ -68,9 +80,26 @@
 	Xmax-height:4.2em;
 }
 
+.upload-sign{
+	position: relative;
+	background: #222;
+}
+
+.plus-mark{
+	width: 4em;
+	top: 50%;
+	margin-top: -2em;
+	text-align: center;
+	height: 4em;
+	position: absolute;
+}
+
 .upload-sign span {
 	font-size: 3em;
+	color: #333;
 }
+
+#instruction{display:none;}
 
 #simulate-shake {
 	display: none;
@@ -1075,9 +1104,9 @@ a.ui-link-inherit {
 	border-bottom-left-radius: 			1em /*{global-radii-buttons}*/;
 }
 .ui-btn-corner-all {
-	-moz-border-radius: 				.3em /*{global-radii-buttons}*/;
-	-webkit-border-radius: 				.3em /*{global-radii-buttons}*/;
-	border-radius: 						.3em /*{global-radii-buttons}*/;
+	-moz-border-radius: 				.2em /*{global-radii-buttons}*/;
+	-webkit-border-radius: 				.2em /*{global-radii-buttons}*/;
+	border-radius: 						.2em /*{global-radii-buttons}*/;
 }
 /* radius clip workaround for cleaning up corner trapping */
 .ui-corner-tl,

@@ -8,8 +8,8 @@
 	<script src="/static/js/jquery.fitImageToContainer.min.js"></script>
 	<link rel="stylesheet" href="/static/css/style.css" />
 </head>
-<body class="ui-mobile-viewport ui-overlay-c">
-<div data-theme="c" style="width:100%; display:block;" class="ui-page ui-body-c ui-page-active">	
+<body class="ui-mobile-viewport ui-overlay-a">
+<div data-theme="a" style="width:100%; display:block;" class="ui-page ui-body-a ui-page-active">	
 	<div data-role="content" class="ui-content">
 		<script type="text/javascript">
 		</script>
@@ -22,7 +22,7 @@
 			{% for fileId in fileIds %}
     		<div class='upload-result pop in'>
     			<div class="loader" style="display: none;"><span class="ui-icon ui-icon-loading"></span></div>
-    			<a href="/shakeshare/file?id={{fileId}}" rel="external"><img class="share-result" src="/shakeshare/file?id={{ fileId }}"/></a>
+    			<a href="/file?id={{fileId}}" rel="external"><img class="share-result" src="/file?id={{ fileId }}"/></a>
     		</div>
 			{% endfor %}
 		</a>

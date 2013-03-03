@@ -1,9 +1,11 @@
 from datetime import timedelta 
 from shakeshare.models import Shake
 from django.db import transaction
+'''
 from math import cos
 from math import acos
 from math import sin
+'''
 
 @transaction.commit_manually
 def flush_transaction():
@@ -38,11 +40,14 @@ def find_matching_shakes_by_time(shake):
     if len(matching_shakes) == 1 and matching_shakes[0] == shake:
         matching_shakes = []
     # filter non-near shakes
+    '''
     for matching_shake in matching_shakes:
         if isTwoShakeNearEachOther(matching_shake, shake) == False:
             matching_shakes.remove(matching_shake)
+    '''
     return matching_shakes
 
+'''
 def isTwoShakeNearEachOther(shake1, shake2):
     lat1 = shake1.latitude
     lat2 = shake2.latitude
@@ -58,3 +63,4 @@ def isTwoShakeNearEachOther(shake1, shake2):
         return true
     else:
         return false
+'''

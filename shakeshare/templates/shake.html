@@ -9,8 +9,8 @@
 	<script src="/static/js/jquery.fitImageToContainer.min.js"></script>
 	<link rel="stylesheet" href="/static/css/style.css" />
 </head>
-<body class="ui-mobile-viewport ui-overlay-c">
-<div data-theme="c" style="width:100%; display:block;" class="ui-page ui-body-c ui-page-active">	
+<body class="ui-mobile-viewport ui-overlay-a">
+<div data-theme="a" style="width:100%; display:block;" class="ui-page ui-body-a ui-page-active">	
 	<div data-role="content" class="ui-content">
 		<div id="shake-info">
 			<h1 id = "lets-shake" class="aligncenter">Ready? Let's Shake!</h1>
@@ -18,7 +18,7 @@
 			<p id= "lets-reshake" class="aligncenter">Shake with your friends again when ready.</p>
 		</div>
 		<!-- hidden form to submit data, avoid JSON communication -->
-		<form id="shake-detect-form" method="post" enctype="multipart/form-data"  data-ajax="false" action="/shakeshare/match">
+		<form id="shake-detect-form" method="post" enctype="multipart/form-data"  data-ajax="false" action="/match">
 			<input type="hidden" name="session_id" value = "{{ session_id }}"/>
 			<input type="hidden" name="is_uploader" value = "{{ is_uploader }}"/>
 			<!-- value to be filled by JS when shake is detected -->
@@ -50,7 +50,7 @@
 		// shake listener
 		function deviceMotionHandler(eventData) {
 		  // Grab the acceleration including gravity from the results
-		  var acceleration = eventData.acceleration;
+		  var acceleration = eventData.accelerationIncludingGravity;
 		  // calculate the acceleration data
 		  var rawAccelerationx = Math.round(acceleration.x);
 		  var rawAccelerationy = Math.round(acceleration.y); 
@@ -69,7 +69,7 @@
 			var syncedTime;
 			
 			$.ajax({
-				url: '/shakeshare/synctime', 
+				url: '/synctime', 
 				cache: false,
 				type: 'GET',
 				async: false, // disable ajax due to time sync must be performed first
@@ -130,7 +130,7 @@
 				var formData = new FormData($('#shake-detect-form')[0]);
 				
 				$.ajax({
-					url: '/shakeshare/match?timestamp=' + timeStamp,  // add timestampe to URL to disable iOS6 cache
+					url: '/match?timestamp=' + timeStamp,  // add timestampe to URL to disable iOS6 cache
 					cache: false,
 					type: 'POST',
 					xhr: function() {  // custom xhr
@@ -155,7 +155,7 @@
 							$("#lets-shake-subtitle").html("You and your friends are connected. We are working hard to create the photo pool!");
 							console.log ("success" + data);
 							// go to new URL
-							window.location = "/shakeshare/pool?match_id=" + data;
+							window.location = "/pool?match_id=" + data;
 						}
 					  },
 					timeout: 10000,
@@ -166,6 +166,7 @@
         				} else {
         					alert(xhr.status + "xhr");
         					alert(message + "message");
+        					handleError ("xhr");
         				}
         			},
 					// Form data
@@ -181,12 +182,12 @@
 		
 		function handleError (status){
 			if (status == "timeout"){
-				$("#lets-shake").html("Oops!");
+				$("#lets-shake").html("Unfortunately...");
 				$("#lets-shake-subtitle").html("Looks like there's a network problem. Maybe check your Internet connection and try again later?");
 				setAcceptShakeStatus(true);
 				console.log ("timeout detected. alreadyShaked=" + alreadyShaked);
 			}
-			else {
+			else if (status == "xhr") {
 				$("#lets-shake").html("Ah, that sucks!");
 				$("#lets-shake-subtitle").html("Something is wrong. Please try again later!");
 				setAcceptShakeStatus(true); // enable reshake

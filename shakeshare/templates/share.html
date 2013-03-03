@@ -8,11 +8,11 @@
 	<script src="/static/js/jquery.fitImageToContainer.min.js"></script>
 	<link rel="stylesheet" href="/static/css/style.css" />
 </head>
-<body class="ui-mobile-viewport ui-overlay-c">
-<div data-theme="c" style="width:100%; display:block;" class="ui-page ui-body-c ui-page-active">	
+<body class="ui-mobile-viewport ui-overlay-a">
+<div data-theme="a" style="width:100%; display:block;" class="ui-page ui-body-a ui-page-active">	
 	<div data-role="content" class="ui-content">
 		<script type="text/javascript">
-			var ajaxloader = "<div class='loader'><span class='ui-icon ui-icon-loading'></span></div>"
+			var ajaxloader = "<div class='loader'><span class='shakeshare-loading ui-icon ui-icon-loading'></span></div>"
 			fileProcessQueue = 100; // determine if there are still files uploading
 			console.log (fileProcessQueue + "initial value");
 			
@@ -38,7 +38,7 @@
 				var imageType = /image.*/;
 				
 				// preview image
-				var insertContent = "<div class='upload-result pop in' id='img"+ timeStamp + "'>"+ ajaxloader +"</div>";
+				var insertContent = "<div class='upload-result ui-shadow pop in' id='img"+ timeStamp + "'>"+ ajaxloader +"</div>";
 				$(insertContent).insertBefore(".upload-sign");
 				
 				var img = document.createElement("img");
@@ -75,7 +75,7 @@
 					},
 					success: function(data) {
 						//alert('upload was performed.');
-						$("#img"+ data + " .loader").fadeOut(200);
+						$("#img"+ data + " .loader").fadeOut(300);
 						console.log(data);
 						console.log (fileProcessQueue + "before success");
 						fileProcessQueue--;
@@ -112,14 +112,13 @@
 			
 			
 		</script>
-		<h1 class="aligncenter">ShakeShare.</h1>
-		<p class="aligncenter">App-free, cross-platform file sharing.</p>
-		<hr/>
-		<p>Add files to share</p>
+		<h1 class="shakeshare-h1 indent-1">Got fun things to share?</h1> 
+		<p class="shakeshare-subtitle indent-1">Pick them from your library.</p>
+		
 		<form id="main-form" method="post" action="../upload/" enctype="multipart/form-data"  data-ajax="false" name="uploadPhoto">
 			<div id="result"></div>
 			<a id="file-upload-wrapper" herf="#">
-				<div class="upload-sign"><span>+</span></div>
+				<div class="upload-sign ui-shadow"><div class="plus-mark"><span>+</span></div></div>
 			</a>
 			<div class="hidden">
 				<input id= "file-upload" type="file" name="file" onchange="handleFiles(this.files)">
@@ -127,9 +126,9 @@
 				<input type="submit" name="submit-form" value="Submit" />
 			</div>
 		</form>
-		<hr/>
-		<p class="aligncenter">Then tell your friends to visit <br/><strong>shakeshare.net</strong></p>
-		<a id="proceed-to-shake" class="ui-disabled" href="/shakeshare/shake?sessionid={{ session_id }}&is_uploader=true" data-role="button" data-icon="arrow-r" data-iconpos="right">Done! What's Next?</a>
+	
+		<p id="instruction">Once you are done picking up jewelry, tell your friends to visit the awesome <strong>ShakeShare.net</strong> and... get ready.</p>
+		<a id="proceed-to-shake" class="ui-disabled" href="/shake?sessionid={{ session_id }}&is_uploader=true" data-role="button" data-theme="b" data-icon="arrow-r" data-iconpos="right">Done! What's Next?</a>
 	</div>
 </div>
 </body>
