@@ -25,6 +25,8 @@ urlpatterns = patterns('',
     (r'^pool.*$', 'shakeshare.views.pool'),
     (r'^file.*$', 'shakeshare.views.file'),
     (r'^synctime$', 'shakeshare.views.synctime'),
+    (r'^setname$', 'shakeshare.views.setname'),
+    (r'^getnames$', 'shakeshare.views.getnames'),
 
 #(r'^hello/$', 'shakeshare.views.hello'),
 )

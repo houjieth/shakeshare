@@ -1,0 +1,83 @@
+[12/May/2013 02:31:20] DEBUG [shakeshare.views:110] session 41 a new shake object is made. id: 40
+[12/May/2013 02:31:20] DEBUG [shakeshare.views:111] session 41 will try to find match
+[12/May/2013 02:31:21] DEBUG [shakeshare.views:124] session 41 with shake 39 is finding matches. matching_shakes count: 2
+[12/May/2013 02:31:21] DEBUG [shakeshare.views:131] session 41 matches a uploader-session 41 with shake 39, files count: 1
+[12/May/2013 02:31:21] DEBUG [shakeshare.views:131] session 41 matches a uploader-session 41 with shake 40, files count: 1
+[12/May/2013 02:31:21] DEBUG [shakeshare.views:124] session 41 with shake 40 is finding matches. matching_shakes count: 2
+[12/May/2013 02:31:21] DEBUG [shakeshare.views:131] session 41 matches a uploader-session 41 with shake 39, files count: 1
+[12/May/2013 02:31:21] DEBUG [shakeshare.views:131] session 41 matches a uploader-session 41 with shake 40, files count: 1
+[12/May/2013 02:38:21] DEBUG [shakeshare.views:76] session 41 is waiting for shake. is_uploader: True
+[12/May/2013 02:41:16] DEBUG [shakeshare.views:76] session 43 is waiting for shake. is_uploader: True
+[12/May/2013 02:42:48] DEBUG [shakeshare.views:76] session 45 is waiting for shake. is_uploader: True
+[12/May/2013 02:49:44] DEBUG [shakeshare.views:76] session 47 is waiting for shake. is_uploader: True
+[12/May/2013 02:52:11] DEBUG [shakeshare.views:76] session 49 is waiting for shake. is_uploader: True
+[12/May/2013 02:54:37] DEBUG [shakeshare.views:76] session 51 is waiting for shake. is_uploader: True
+[12/May/2013 02:57:18] DEBUG [shakeshare.views:76] session 53 is waiting for shake. is_uploader: True
+[12/May/2013 02:57:24] DEBUG [shakeshare.views:95] session 53 shaked. is_uploader True ,time: 1368352644 latitude 0 longtitude 0 accuracy 0
+[12/May/2013 02:57:24] DEBUG [shakeshare.views:110] session 53 a new shake object is made. id: 41
+[12/May/2013 02:57:24] DEBUG [shakeshare.views:111] session 53 will try to find match
+[12/May/2013 02:57:25] DEBUG [shakeshare.views:124] session 53 with shake 41 is finding matches. matching_shakes count: 0
+[12/May/2013 02:57:27] DEBUG [shakeshare.views:124] session 53 with shake 41 is finding matches. matching_shakes count: 0
+[12/May/2013 02:57:31] DEBUG [shakeshare.views:124] session 53 with shake 41 is finding matches. matching_shakes count: 0
+[12/May/2013 02:57:49] DEBUG [shakeshare.views:76] session 55 is waiting for shake. is_uploader: False
+[12/May/2013 02:57:53] DEBUG [shakeshare.views:95] session 55 shaked. is_uploader False ,time: 1368352673 latitude 0 longtitude 0 accuracy 0
+[12/May/2013 02:57:53] DEBUG [shakeshare.views:110] session 55 a new shake object is made. id: 42
+[12/May/2013 02:57:53] DEBUG [shakeshare.views:111] session 55 will try to find match
+[12/May/2013 02:57:54] DEBUG [shakeshare.views:124] session 55 with shake 42 is finding matches. matching_shakes count: 0
+[12/May/2013 02:57:56] DEBUG [shakeshare.views:124] session 55 with shake 42 is finding matches. matching_shakes count: 0
+[12/May/2013 02:58:00] DEBUG [shakeshare.views:124] session 55 with shake 42 is finding matches. matching_shakes count: 0
+[12/May/2013 02:58:24] DEBUG [shakeshare.views:76] session 56 is waiting for shake. is_uploader: True
+[12/May/2013 02:58:28] DEBUG [shakeshare.views:76] session 57 is waiting for shake. is_uploader: False
+[12/May/2013 02:58:33] DEBUG [shakeshare.views:95] session 56 shaked. is_uploader True ,time: 1368352713 latitude 0 longtitude 0 accuracy 0
+[12/May/2013 02:58:33] DEBUG [shakeshare.views:110] session 56 a new shake object is made. id: 43
+[12/May/2013 02:58:33] DEBUG [shakeshare.views:111] session 56 will try to find match
+[12/May/2013 02:58:33] DEBUG [shakeshare.views:95] session 57 shaked. is_uploader False ,time: 1368352713 latitude 0 longtitude 0 accuracy 0
+[12/May/2013 02:58:33] DEBUG [shakeshare.views:110] session 57 a new shake object is made. id: 44
+[12/May/2013 02:58:33] DEBUG [shakeshare.views:111] session 57 will try to find match
+[12/May/2013 02:58:34] DEBUG [shakeshare.views:124] session 56 with shake 43 is finding matches. matching_shakes count: 2
+[12/May/2013 02:58:34] DEBUG [shakeshare.views:131] session 56 matches a uploader-session 56 with shake 43, files count: 1
+[12/May/2013 02:58:34] DEBUG [shakeshare.views:124] session 57 with shake 44 is finding matches. matching_shakes count: 2
+[12/May/2013 02:58:34] DEBUG [shakeshare.views:131] session 57 matches a uploader-session 57 with shake 43, files count: 1
+[12/May/2013 03:03:39] DEBUG [shakeshare.views:76] session 56 is waiting for shake. is_uploader: True
+[12/May/2013 03:03:47] DEBUG [shakeshare.views:76] session 59 is waiting for shake. is_uploader: False
+[12/May/2013 03:03:50] DEBUG [shakeshare.views:76] session 60 is waiting for shake. is_uploader: False
+[12/May/2013 03:19:05] DEBUG [shakeshare.views:76] session 61 is waiting for shake. is_uploader: False
+[12/May/2013 03:19:17] DEBUG [shakeshare.views:76] session 62 is waiting for shake. is_uploader: False
+[12/May/2013 03:19:21] DEBUG [shakeshare.views:76] session 63 is waiting for shake. is_uploader: False
+[12/May/2013 03:19:33] DEBUG [shakeshare.views:76] session 64 is waiting for shake. is_uploader: False
+[12/May/2013 03:19:38] DEBUG [shakeshare.views:76] session 65 is waiting for shake. is_uploader: False
+[12/May/2013 03:19:52] DEBUG [shakeshare.views:76] session 66 is waiting for shake. is_uploader: False
+[12/May/2013 03:20:08] DEBUG [shakeshare.views:76] session 67 is waiting for shake. is_uploader: False
+[12/May/2013 03:20:27] DEBUG [shakeshare.views:76] session 68 is waiting for shake. is_uploader: False
+[12/May/2013 03:20:33] DEBUG [shakeshare.views:76] session 69 is waiting for shake. is_uploader: False
+[12/May/2013 03:20:50] DEBUG [shakeshare.views:76] session 70 is waiting for shake. is_uploader: False
+[12/May/2013 03:22:02] DEBUG [shakeshare.views:76] session 71 is waiting for shake. is_uploader: False
+[12/May/2013 03:26:56] DEBUG [shakeshare.views:76] session 72 is waiting for shake. is_uploader: False
+[12/May/2013 03:27:24] DEBUG [shakeshare.views:197] [<Session: create_time: 2013-05-12 10:26:56+00:00, expire_time: 2013-05-12 13:26:56+00:00, session_id: 72, is_uploader: False, associated_sessions: null>]
+[12/May/2013 03:27:51] DEBUG [shakeshare.views:76] session 74 is waiting for shake. is_uploader: False
+[12/May/2013 03:29:44] DEBUG [shakeshare.views:76] session 75 is waiting for shake. is_uploader: False
+[12/May/2013 03:30:09] DEBUG [shakeshare.views:76] session 76 is waiting for shake. is_uploader: False
+[12/May/2013 03:30:22] DEBUG [shakeshare.views:76] session 77 is waiting for shake. is_uploader: False
+[12/May/2013 03:30:53] DEBUG [shakeshare.views:76] session 78 is waiting for shake. is_uploader: False
+[12/May/2013 03:31:10] DEBUG [shakeshare.views:76] session 79 is waiting for shake. is_uploader: False
+[12/May/2013 03:31:37] DEBUG [shakeshare.views:76] session 80 is waiting for shake. is_uploader: False
+[12/May/2013 03:32:02] DEBUG [shakeshare.views:76] session 81 is waiting for shake. is_uploader: False
+[12/May/2013 03:32:24] DEBUG [shakeshare.views:76] session 82 is waiting for shake. is_uploader: False
+[12/May/2013 03:33:07] DEBUG [shakeshare.views:76] session 83 is waiting for shake. is_uploader: False
+[12/May/2013 03:33:17] DEBUG [shakeshare.views:76] session 84 is waiting for shake. is_uploader: False
+[12/May/2013 03:35:02] DEBUG [shakeshare.views:197] []
+[12/May/2013 03:35:39] DEBUG [shakeshare.views:197] []
+[12/May/2013 03:37:18] DEBUG [shakeshare.views:197] []
+[12/May/2013 03:37:54] DEBUG [shakeshare.views:76] session 85 is waiting for shake. is_uploader: False
+[12/May/2013 03:38:06] DEBUG [shakeshare.views:197] [<Session: create_time: 2013-05-12 10:37:54+00:00, expire_time: 2013-05-12 13:37:54+00:00, session_id: 85, is_uploader: False, associated_sessions: null>]
+[12/May/2013 03:38:32] DEBUG [shakeshare.views:76] session 86 is waiting for shake. is_uploader: False
+[12/May/2013 03:38:42] DEBUG [shakeshare.views:197] [<Session: create_time: 2013-05-12 10:37:54+00:00, expire_time: 2013-05-12 13:37:54+00:00, session_id: 85, is_uploader: False, associated_sessions: null>, <Session: create_time: 2013-05-12 10:38:32+00:00, expire_time: 2013-05-12 13:38:32+00:00, session_id: 86, is_uploader: False, associated_sessions: null>]
+[12/May/2013 03:44:08] DEBUG [shakeshare.views:76] session 87 is waiting for shake. is_uploader: False
+[12/May/2013 03:44:34] DEBUG [shakeshare.views:76] session 88 is waiting for shake. is_uploader: False
+[12/May/2013 03:45:15] DEBUG [shakeshare.views:76] session 89 is waiting for shake. is_uploader: False
+[12/May/2013 03:45:47] DEBUG [shakeshare.views:197] [<Session: create_time: 2013-05-12 10:45:15+00:00, expire_time: 2013-05-12 13:45:15+00:00, session_id: 89, is_uploader: False, associated_sessions: null>]
+[12/May/2013 03:45:56] DEBUG [shakeshare.views:197] [<Session: create_time: 2013-05-12 10:45:15+00:00, expire_time: 2013-05-12 13:45:15+00:00, session_id: 89, is_uploader: False, associated_sessions: null>]
+[12/May/2013 03:47:43] DEBUG [shakeshare.views:76] session 90 is waiting for shake. is_uploader: False
+[12/May/2013 03:48:07] DEBUG [shakeshare.views:76] session 91 is waiting for shake. is_uploader: False
+[12/May/2013 03:48:40] DEBUG [shakeshare.views:76] session 93 is waiting for shake. is_uploader: False
+[12/May/2013 03:50:45] DEBUG [shakeshare.views:76] session 94 is waiting for shake. is_uploader: False
