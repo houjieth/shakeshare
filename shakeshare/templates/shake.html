@@ -15,8 +15,20 @@
 <body class="ui-mobile-viewport ui-overlay-a">
 <div data-theme="a" style="width:100%; display:block;" class="ui-page ui-body-a ui-page-active">	
 	<div data-role="content" class="ui-content">
+		<div class= "ui-body ui-body-e" id="motion-unsupport">
+			<h1>Oops! Motion detection is not supported on your device.</h1>
+			<p>If you still want to shake/receive file, click the "Shake!" button while others are shaking their phones. </p>
+		</div>
+		<div class= "ui-body ui-body-e" id="geo-error">
+			<h1>Oops! Where are you?</h1>
+			<p>ShakeShare needs to know your location to match with others. We'll retry in a moment..</p>
+		</div>
+		<div class= "ui-body ui-body-e" id="geo-unsupport">
+			<h1>Oops! Location service is not supported/enabled on your device.</h1>
+			<p>ShakeShare needs to know your location to match with others. Please turn it on!</p>
+		</div>
 		<div id="shake-info">
-			<h1 id = "lets-shake" class="aligncenter">Wait a sec...</h1>
+			<h1 id ="lets-shake" class="aligncenter">Initiating...</h1>
 			<p id= "lets-shake-subtitle" class="aligncenter"></p>
 			<p id= "lets-reshake" class="aligncenter"></p>
 		</div>
@@ -27,19 +39,13 @@
 			<p id="uploader-subtitle-2"></p>
 		</div>
 		<form id="uploader-form">
-			<fieldset data-role="controlgroup">
-			    <legend>Choose your friends:</legend>
-			    <input type="checkbox" name="checkbox-1a" id="checkbox-1a" checked="checked">
-			    <label for="checkbox-1a">Cheetos</label>
-			    <input type="checkbox" name="checkbox-2a" id="checkbox-2a" checked="checked">
-			    <label for="checkbox-2a">Doritos</label>
-			    <input type="checkbox" name="checkbox-3a" id="checkbox-3a" checked="checked">
-			    <label for="checkbox-3a">Fritos</label>
-			    <input type="checkbox" name="checkbox-4a" id="checkbox-4a" checked="checked">
-			    <label for="checkbox-4a">Sun Chips</label>
+			<legend>Choose your friends:</legend>
+			<fieldset id="uploader-form-fieldset" data-role="controlgroup">
+			 	<!--to be inserted by ajax polling-->
 			</fieldset>
+			<input type="hidden" name="session_id" value="{{session_id}}"/>
 		</form>
-		<a id="uploader-form-submit" href="javascript:void(0);" data-role="button">I'm Ready!</a>
+		<a id="uploader-form-submit" href="javascript:void(0);" data-role="button">I'm Ready!</a>	
 		{% else %}
 		<div id="receiver-info">
 			<h1 id="receiver-h1">Your name, please?</h1>
@@ -63,7 +69,7 @@
 			<input id="geo-accuracy" type="hidden" name="accuracy" value = ""/>
 			<!--<input type="submit" style="display:none;" value="PurePost" />-->
 		</form>
-		<a id="simulate-shake" href="" data-role="button">"Shake!"</a>
+		<a id="simulate-shake" href="javascript: void(0);" data-role="button">"Shake!"</a>
 	</div>
 	<script type="text/javascript">
 	
@@ -72,6 +78,9 @@
 
 		var shakeReady = false;
 		var geoReady = false;
+		var nameSubmitReady = false;
+		var nameSubmitInProgress = false;
+		var nameSubmitted = false;
 		
 		var mod = 0;
 		
@@ -89,9 +98,7 @@
 		  	shakeReady = true;
 		} else {
 			// if not, provide alternative ways
-		  	$("#lets-shake").html("Oops! Motion detection is not supported on your device.")
-		  	$("#lets-shake-subtitle").html("If you still want to shake/receive file, click the button while others are shaking their phones.")
-		  	$("#simulate-shake").fadeIn(300);
+		  	handleError ("motionUnsupported");
 		}
 		
 		// detect geo location first
@@ -111,48 +118,45 @@
 					  Math.pow(rawAccelerationx,2)+Math.pow(rawAccelerationy,2)+Math.pow(rawAccelerationz,2)
 					  ));
 		}
-		
+		  
 		// detect geo location
 		function detectGeoLocation (){
 			console.log ("geolocation called");
 			if (navigator.geolocation){
-				console.log ("geolocation supported");
+				//console.log ("geolocation supported");
 				navigator.geolocation.getCurrentPosition(
 					function (position) {
-						console.log ("geolocation succeeded. next step: update global variable");
+						//console.log ("geolocation succeeded. next step: update global variable");
 						updateGeoLocation(position.coords.latitude, position.coords.longitude, position.coords.accuracy)
 					},
 					function errorCallback(error) {
-						console.log ("geolocation error. next step: handle error");
+						//console.log ("geolocation error. next step: handle error");
 						handleError ("geoFail");
 					},
 					{enableHighAccuracy:true, maximumAge:20000, timeout:5000}
 				);
     		}
     		else {
-    			console.log ("geolocation disabled on browser");
+    			handleError ("geoUnspoorted");
     		}
 		}
 		
 		// function to update geo location, if accuracy is greater 
 		function updateGeoLocation(latitude, longitude, accuracy){	
-			console.log ("geolocation update called");			
+			//console.log ("geolocation update called");			
 			if (accuracy < geoAccuracy){
 				geoLatitude = latitude;
 				geoLongitude = longitude;
 				geoAccuracy = accuracy;
-				console.log ("geolocation updated:");
-				console.log(latitude);
-				console.log(longitude + " vs " + geoLongitude);
-				console.log(accuracy);
+				console.log ("geolocation updated:" + latitude + longitude + " vs " + geoLongitude + accuracy);
 			}
 			// update form
 			$("#geo-lat").val(geoLatitude);
 			$("#geo-log").val(geoLongitude);
 			$("#geo-accuracy").val(geoAccuracy);
-			console.log($("#geo-lat").val());
-			console.log($("#geo-log").val());
-			console.log($("#geo-accuracy").val());
+			//console.log($("#geo-lat").val());
+			//console.log($("#geo-log").val());
+			//console.log($("#geo-accuracy").val());
 			// enable shake, one-time display of lets shake message so that it wont overwrite other message
 			if (geoReady == false){
 				//$("#lets-shake").html("Ready? Let's Shake!");
@@ -214,6 +218,85 @@
 			console.log (syncedTime + " - returned time");
 			return syncedTime;
 		}
+		
+		{% if is_uploader %}
+		function updateReceiverName(){
+			if (!nameSubmitted && !nameSubmitInProgress){
+				var currentTimeStamp = new Date().getTime().toString();
+				// polling ajax to dymaincally update receiver name list
+				console.log ("start/restart polling ajax");
+				$.ajax({ 
+					url: '/getnames?session_id={{session_id}}&timestamp=' + currentTimeStamp,  // add timestampe to URL to disable iOS6 cache
+					cache: false,
+					type: 'GET',
+					success: function(data){
+						console.log ("info received from server");
+						console.log(data);
+						nameSubmitReady = false;
+						$("#uploader-form-fieldset").empty();
+						$.each(data.available_users, function (index, element){
+							var nameItemHTML = "<input type='checkbox' name='receiver_session_id_"+ index +"' id= 'receiver_session_id_"+ index +"' value='"+ element.session_id +"' checked='checked'><label for='receiver_session_id_" + index + "'>"+ element.name + "</label>";
+							$("#uploader-form-fieldset").append(nameItemHTML); 
+						});
+						$("#uploader-form").trigger("create"); //use trigger to make sure jQuery mobile style is applied
+						nameSubmitReady = true;
+					}, 
+					error: function (xhr, status, message) {
+						// handle timeout
+						if(status=="timeout") {} 
+						else {
+							console.log(xhr.status + "xhr");
+							console.log(message + "message");
+							handleError ("xhr");
+						}
+	        		},
+					dataType: "json", 
+					complete: updateReceiverName, 
+					timeout: 30000 
+				});
+			}
+    	};	
+    	
+    	function submitReceiverName(){
+    		if (nameSubmitReady){
+    			nameSubmitInProgress = true;
+				var currentTimeStamp = new Date().getTime().toString();
+				var formData = $('#uploader-form').serialize();
+				console.log ("sending accepted names");
+				console.log(formData);
+				$.ajax({ 
+					url: '/setreceiver?timestamp=' + currentTimeStamp,  // add timestampe to URL to disable iOS6 cache
+					cache: false,
+					type: 'POST',
+					success: function(data){
+						$("#uploader-form-sbumit").fadeOut(300);
+						nameSubmitted = true;
+						nameSubmitInProgress = false;
+					}, 
+					error: function (xhr, status, message) {
+						nameSubmitted = false;
+						nameSubmitInProgress = false;
+						// handle timeout
+						if(status=="timeout") {} 
+						else {
+							console.log(xhr.status + "xhr");
+							console.log(message + "message");
+							handleError ("xhr");
+						}
+						updateReceiverName();
+	        		},
+					data: formData,
+					timeout: 10000 
+				});
+			}
+    	}
+    	
+    	updateReceiverName();
+    	$("#uploader-form-submit").click(function(){
+	    	submitReceiverName()
+    	});
+    	
+    	{% endif %}
 		
 		// check shake, and send formdata to server
 		function detectShake (simulateShake){
@@ -324,7 +407,17 @@
 
 		
 		function handleError (status){
-			if (status == "timeout"){
+			if (status == "motionUnsupported"){
+				$("#motion-unsupport").fadeIn(300);
+				$("#simulate-shake").fadeIn(300);
+			}
+			
+			else if (status == "geoUnsupported"){
+				$("#geo-unsupport").fadeIn(300);
+				//$("#simulate-shake").fadeOut(300);
+			}
+			
+			else if (status == "timeout"){
 				$("#lets-shake").html("Unfortunately...");
 				$("#lets-shake-subtitle").html("Looks like there's a network problem. Maybe check your Internet connection and try again later?");
 				setAcceptShakeUI(true);
@@ -337,8 +430,7 @@
 				console.log ("other error detected. shakeReady=" + shakeReady);
 			}
 			else if (status == "geoFail") {
-				$("#lets-shake").html("Where are you?");
-				$("#lets-shake-subtitle").html("ShakeShare needs to know your location to match with others. We'll retry in a moment...");
+				$("geo-error").fadeIn(300);
 				setAcceptShakeUI(false); // enable reshake
 				console.log ("geo fail detected. shakeReady=" + shakeReady);
 			}

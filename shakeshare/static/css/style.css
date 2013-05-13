@@ -24,7 +24,7 @@ body{
 
 .shakeshare-h1 {font-size: 1.5em; margin-top:.2em; margin-bottom: .2em;}
 .shakeshare-subtitle{margin-top: .2em;}
-#shake-info{
+#shake-info, #motion-error, #motion-unsupport, #geo-error, #geo-unsupport{
 	display: none;
 }
 

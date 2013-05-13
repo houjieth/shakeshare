@@ -9,6 +9,8 @@ from datetime import timedelta
 from django.views.decorators.cache import never_cache
 from string import split
 from time import sleep
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from shakeshare.models import Session
 from shakeshare.models import File
@@ -17,8 +19,10 @@ from shakeshare.models import Match
 
 import json
 import logging
+import threading
 
 logger = logging.getLogger(__name__)
+new_session_event = threading.Event()
 
 def hello(request):
     return HttpResponse("Hello world")
@@ -81,7 +85,10 @@ def shake(request):
 @csrf_exempt
 def match(request):
     session_id = request.POST['session_id']
-    is_uploader = request.POST['is_uploader']
+
+    session = Session.objects.get(id=session_id)
+    is_uploader = session.is_uploader;
+
     time = request.POST['time']
 
     latitude = 0
@@ -92,12 +99,12 @@ def match(request):
     #longitude = float(request.POST['longitude'])
     #accuracy = float(request.POST['accuracy'])
 
-    logger.debug("session " + session_id + " shaked. is_uploader " + is_uploader + " ,time: " + time + " latitude " + unicode(latitude) + " longtitude " + unicode(longitude) + " accuracy " + unicode(accuracy))
+    logger.debug("session " + unicode(session_id) + " shaked. is_uploader " + unicode(is_uploader) + " ,time: " + time + " latitude " + unicode(latitude) + " longtitude " + unicode(longitude) + " accuracy " + unicode(accuracy))
 
     # Every time we shake, we create a shake object
     shake = Shake()
     shake.session_id = Session.objects.get(id=session_id)
-    if is_uploader == 'True':
+    if is_uploader == True:
         shake.is_from_uploader = True
     else:
         shake.is_from_uploader = False
@@ -107,7 +114,7 @@ def match(request):
     shake.accuracy = accuracy
 
     shake.save()
-    logger.debug("session " + session_id + " a new shake object is made. id: " + unicode(shake.id))
+    logger.debug("session " + session_id + " a new shake object is made. id: " + unicode(shake.id) + " is_from_uploader " + unicode(shake.is_from_uploader))
     logger.debug("session " + session_id  + " will try to find match")
 
     # Due to difference in network conditions, some shake may arrive late
@@ -121,7 +128,7 @@ def match(request):
     while wait_time_total < 7:
         sleep(wait_time)
         matching_shakes = find_matching_shakes(shake)
-        logger.debug("session " + session_id + " with shake " + unicode(shake.id) + " is finding matches."  + " matching_shakes count: " + unicode(len(matching_shakes)))  
+        logger.debug("session " + session_id + " with shake " + unicode(shake.id) + " finished finding matches."  + " matching_shakes count: " + unicode(len(matching_shakes)))  
         file_id_list = []
         for matching_shake in matching_shakes:
             if matching_shake.is_from_uploader is True:
@@ -160,7 +167,6 @@ def pool(request):
     c = Context({'fileIds':file_id_list, 'fileCount':len(file_id_list)})
 
     return HttpResponse(t.render(c))
-        
 
 def file(request):
     file_id = request.GET.get('id', 'null')
@@ -188,22 +194,63 @@ def setname(request):
 
     return HttpResponse("OK")
 
+@receiver(post_save, sender=Session)
+def session_creation_handler(sender, **kwargs):
+    logger.debug("======= session creation/update detected ========")
+    new_session_event.set()
+
+@csrf_exempt
+@never_cache
 def getnames(request):
+    if new_session_event.is_set() is False:
+        logger.debug("waiting for new sessions")
+        new_session_event.wait(timeout=30)
+
+    if new_session_event.is_set() is False:
+        return HttpResponse("Timeout")
+
+    logger.debug("now reading names")
+
     cur_time = datetime.now()
     delta = timedelta(seconds=60)
     time_lower_bound = cur_time - delta
+    time_upper_bound = cur_time + delta
     available_sessions = list(Session.objects.filter(
-            create_time__range=(time_lower_bound, cur_time)))
+            create_time__range=(time_lower_bound, time_upper_bound)))
     logger.debug(available_sessions)
 
     # generate json response
     entries = []
     response = {}
     for session in available_sessions:
-        entry = {}
-        entry['name'] = session.user_name
-        entry['session_id'] = session.id
-        entries.append(entry);
+        if session.is_uploader is False and session.user_name != 'null':
+            entry = {}
+            entry['name'] = session.user_name
+            entry['session_id'] = session.id
+            entries.append(entry);
     response['available_users'] = entries
 
+    new_session_event.clear()
+
     return HttpResponse(json.dumps(response), mimetype="application/json")
+
+@csrf_exempt
+@never_cache
+def setreceiver(request):
+    logger.debug(request)
+
+    uploader_session_id = request.POST['session_id']
+
+    associated_session_list = []
+    for key in request.POST:
+        if key != 'session_id':
+            associated_session_list.append(int(request.POST[key]))
+
+    logger.debug(associated_session_list)
+
+    uploader_session = Session.objects.get(id=uploader_session_id)
+    uploader_session.associated_sessions = json.dumps(associated_session_list)
+    uploader_session.save()
+
+    return HttpResponse("OK")
+

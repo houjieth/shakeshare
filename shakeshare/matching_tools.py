@@ -5,6 +5,7 @@ from django.db import transaction
 
 import math
 import logging
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -32,19 +33,34 @@ def find_matching_shakes_by_time(shake):
 def find_matching_shakes(shake): 
     # need to flush transaction to get the latest data in database
     flush_transaction()
-    #logger.debug("system is finding matching shakes for shake id " + unicode(shake.id) + " from " + unicode(Shake.objects.count()) + " existing shake objects")
+    logger.debug("system is finding matching shakes for shake id " + unicode(shake.id) + ", is_from_uploader " + unicode(shake.is_from_uploader) + " session: " + unicode(shake.session_id) + " from " + unicode(Shake.objects.count()) + " existing shake objects")
     shake_time = shake.time
     delta = timedelta(seconds=5)
     shake_time_lowerbound = shake_time - delta
     shake_time_upperbound = shake_time + delta
     matching_shakes = list(Shake.objects.filter(
             time__range=(shake_time_lowerbound, shake_time_upperbound)))
+
+    logger.debug("matching shakes found for shake " + unicode(shake.id) + ": " + unicode(matching_shakes))
+
+    # session filtering: delete shakes from not associated sessions 
+    logger.debug("starting session filtering")
+    json_decoder = json.decoder.JSONDecoder()
+    for matching_shake in matching_shakes:
+        if shake.is_from_uploader is False and matching_shake.is_from_uploader is True:
+            allowed_session_id_list = json_decoder.decode(matching_shake.session_id.associated_sessions)
+            logger.debug("among matched shakes, we found a uploader-shake " + unicode(matching_shake.id) + ", which allows these receiver-sessions: " + unicode(allowed_session_id_list))
+            if shake.session_id.id not in allowed_session_id_list:
+                logger.debug("session " + unicode(shake.session_id.id) + " is not in the list. shake removed.")
+                matching_shakes.remove(matching_shake)
+        
     '''
     # filter non-near shakes
     for matching_shake in matching_shakes:
         if areTwoShakesNearEachOther(matching_shake, shake) == False:
             matching_shakes.remove(matching_shake)
     '''
+
     # if just find itself, this is not a sucessful matching
     if len(matching_shakes) == 1 and matching_shakes[0] == shake:
         matching_shakes = []

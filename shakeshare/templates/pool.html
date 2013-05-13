@@ -13,12 +13,12 @@
 	<link rel="stylesheet" href="/static/css/style.css" />
 </head>
 <body class="ui-mobile-viewport ui-overlay-a">
-<div data-theme="a" style="width:100%; display:block;" class="ui-page ui-body-a ui-page-active">	
+<div data-theme="a" style="width:100%; display:block;" class="ui-page ui-body-a ui-page-active" id="result-page">	
 	<div data-role="content" class="ui-content">
 		<script type="text/javascript">
 		</script>
 		<h1 class="aligncenter">Feeling Good?</h1>
-		<p class="aligncenter"><b>ShakeShare</b> makes sharing easy. No apps, no cross-platform hassles.</p>
+		<p class="aligncenter"><b>ShakeShare</b> makes sharing easy. No apps, just fun.</p>
 		<hr/>
 		<p>{{ fileCount }} photos shared with you. Tap thumbnail to save.</p>
 		<div id="result"></div>
@@ -35,14 +35,13 @@
 		<a id="proceed" href="" data-role="button" data-icon="arrow-r" data-iconpos="right">I also want to share</a>
 		
 		<script type="text/javascript">
-			$(window).load(function(){
-				//resize image
-				console.log("load triggered");
-				$(".share-result").fitImageToContainer({
-					fit: true
-					//complete: function(element) {console.log("fit performed.");}
-				});
+		$(document).delegate("pagecreate", "#result-page", function() {
+			console.log("pagecreate triggered");
+			$(".share-result").fitImageToContainer({
+				fit: true,
+				complete: function(element) {console.log("fit performed.");}
 			});
+		});
 		</script>
 	</div>
 </div>

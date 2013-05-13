@@ -1,83 +1,252 @@
-[12/May/2013 02:31:20] DEBUG [shakeshare.views:110] session 41 a new shake object is made. id: 40
-[12/May/2013 02:31:20] DEBUG [shakeshare.views:111] session 41 will try to find match
-[12/May/2013 02:31:21] DEBUG [shakeshare.views:124] session 41 with shake 39 is finding matches. matching_shakes count: 2
-[12/May/2013 02:31:21] DEBUG [shakeshare.views:131] session 41 matches a uploader-session 41 with shake 39, files count: 1
-[12/May/2013 02:31:21] DEBUG [shakeshare.views:131] session 41 matches a uploader-session 41 with shake 40, files count: 1
-[12/May/2013 02:31:21] DEBUG [shakeshare.views:124] session 41 with shake 40 is finding matches. matching_shakes count: 2
-[12/May/2013 02:31:21] DEBUG [shakeshare.views:131] session 41 matches a uploader-session 41 with shake 39, files count: 1
-[12/May/2013 02:31:21] DEBUG [shakeshare.views:131] session 41 matches a uploader-session 41 with shake 40, files count: 1
-[12/May/2013 02:38:21] DEBUG [shakeshare.views:76] session 41 is waiting for shake. is_uploader: True
-[12/May/2013 02:41:16] DEBUG [shakeshare.views:76] session 43 is waiting for shake. is_uploader: True
-[12/May/2013 02:42:48] DEBUG [shakeshare.views:76] session 45 is waiting for shake. is_uploader: True
-[12/May/2013 02:49:44] DEBUG [shakeshare.views:76] session 47 is waiting for shake. is_uploader: True
-[12/May/2013 02:52:11] DEBUG [shakeshare.views:76] session 49 is waiting for shake. is_uploader: True
-[12/May/2013 02:54:37] DEBUG [shakeshare.views:76] session 51 is waiting for shake. is_uploader: True
-[12/May/2013 02:57:18] DEBUG [shakeshare.views:76] session 53 is waiting for shake. is_uploader: True
-[12/May/2013 02:57:24] DEBUG [shakeshare.views:95] session 53 shaked. is_uploader True ,time: 1368352644 latitude 0 longtitude 0 accuracy 0
-[12/May/2013 02:57:24] DEBUG [shakeshare.views:110] session 53 a new shake object is made. id: 41
-[12/May/2013 02:57:24] DEBUG [shakeshare.views:111] session 53 will try to find match
-[12/May/2013 02:57:25] DEBUG [shakeshare.views:124] session 53 with shake 41 is finding matches. matching_shakes count: 0
-[12/May/2013 02:57:27] DEBUG [shakeshare.views:124] session 53 with shake 41 is finding matches. matching_shakes count: 0
-[12/May/2013 02:57:31] DEBUG [shakeshare.views:124] session 53 with shake 41 is finding matches. matching_shakes count: 0
-[12/May/2013 02:57:49] DEBUG [shakeshare.views:76] session 55 is waiting for shake. is_uploader: False
-[12/May/2013 02:57:53] DEBUG [shakeshare.views:95] session 55 shaked. is_uploader False ,time: 1368352673 latitude 0 longtitude 0 accuracy 0
-[12/May/2013 02:57:53] DEBUG [shakeshare.views:110] session 55 a new shake object is made. id: 42
-[12/May/2013 02:57:53] DEBUG [shakeshare.views:111] session 55 will try to find match
-[12/May/2013 02:57:54] DEBUG [shakeshare.views:124] session 55 with shake 42 is finding matches. matching_shakes count: 0
-[12/May/2013 02:57:56] DEBUG [shakeshare.views:124] session 55 with shake 42 is finding matches. matching_shakes count: 0
-[12/May/2013 02:58:00] DEBUG [shakeshare.views:124] session 55 with shake 42 is finding matches. matching_shakes count: 0
-[12/May/2013 02:58:24] DEBUG [shakeshare.views:76] session 56 is waiting for shake. is_uploader: True
-[12/May/2013 02:58:28] DEBUG [shakeshare.views:76] session 57 is waiting for shake. is_uploader: False
-[12/May/2013 02:58:33] DEBUG [shakeshare.views:95] session 56 shaked. is_uploader True ,time: 1368352713 latitude 0 longtitude 0 accuracy 0
-[12/May/2013 02:58:33] DEBUG [shakeshare.views:110] session 56 a new shake object is made. id: 43
-[12/May/2013 02:58:33] DEBUG [shakeshare.views:111] session 56 will try to find match
-[12/May/2013 02:58:33] DEBUG [shakeshare.views:95] session 57 shaked. is_uploader False ,time: 1368352713 latitude 0 longtitude 0 accuracy 0
-[12/May/2013 02:58:33] DEBUG [shakeshare.views:110] session 57 a new shake object is made. id: 44
-[12/May/2013 02:58:33] DEBUG [shakeshare.views:111] session 57 will try to find match
-[12/May/2013 02:58:34] DEBUG [shakeshare.views:124] session 56 with shake 43 is finding matches. matching_shakes count: 2
-[12/May/2013 02:58:34] DEBUG [shakeshare.views:131] session 56 matches a uploader-session 56 with shake 43, files count: 1
-[12/May/2013 02:58:34] DEBUG [shakeshare.views:124] session 57 with shake 44 is finding matches. matching_shakes count: 2
-[12/May/2013 02:58:34] DEBUG [shakeshare.views:131] session 57 matches a uploader-session 57 with shake 43, files count: 1
-[12/May/2013 03:03:39] DEBUG [shakeshare.views:76] session 56 is waiting for shake. is_uploader: True
-[12/May/2013 03:03:47] DEBUG [shakeshare.views:76] session 59 is waiting for shake. is_uploader: False
-[12/May/2013 03:03:50] DEBUG [shakeshare.views:76] session 60 is waiting for shake. is_uploader: False
-[12/May/2013 03:19:05] DEBUG [shakeshare.views:76] session 61 is waiting for shake. is_uploader: False
-[12/May/2013 03:19:17] DEBUG [shakeshare.views:76] session 62 is waiting for shake. is_uploader: False
-[12/May/2013 03:19:21] DEBUG [shakeshare.views:76] session 63 is waiting for shake. is_uploader: False
-[12/May/2013 03:19:33] DEBUG [shakeshare.views:76] session 64 is waiting for shake. is_uploader: False
-[12/May/2013 03:19:38] DEBUG [shakeshare.views:76] session 65 is waiting for shake. is_uploader: False
-[12/May/2013 03:19:52] DEBUG [shakeshare.views:76] session 66 is waiting for shake. is_uploader: False
-[12/May/2013 03:20:08] DEBUG [shakeshare.views:76] session 67 is waiting for shake. is_uploader: False
-[12/May/2013 03:20:27] DEBUG [shakeshare.views:76] session 68 is waiting for shake. is_uploader: False
-[12/May/2013 03:20:33] DEBUG [shakeshare.views:76] session 69 is waiting for shake. is_uploader: False
-[12/May/2013 03:20:50] DEBUG [shakeshare.views:76] session 70 is waiting for shake. is_uploader: False
-[12/May/2013 03:22:02] DEBUG [shakeshare.views:76] session 71 is waiting for shake. is_uploader: False
-[12/May/2013 03:26:56] DEBUG [shakeshare.views:76] session 72 is waiting for shake. is_uploader: False
-[12/May/2013 03:27:24] DEBUG [shakeshare.views:197] [<Session: create_time: 2013-05-12 10:26:56+00:00, expire_time: 2013-05-12 13:26:56+00:00, session_id: 72, is_uploader: False, associated_sessions: null>]
-[12/May/2013 03:27:51] DEBUG [shakeshare.views:76] session 74 is waiting for shake. is_uploader: False
-[12/May/2013 03:29:44] DEBUG [shakeshare.views:76] session 75 is waiting for shake. is_uploader: False
-[12/May/2013 03:30:09] DEBUG [shakeshare.views:76] session 76 is waiting for shake. is_uploader: False
-[12/May/2013 03:30:22] DEBUG [shakeshare.views:76] session 77 is waiting for shake. is_uploader: False
-[12/May/2013 03:30:53] DEBUG [shakeshare.views:76] session 78 is waiting for shake. is_uploader: False
-[12/May/2013 03:31:10] DEBUG [shakeshare.views:76] session 79 is waiting for shake. is_uploader: False
-[12/May/2013 03:31:37] DEBUG [shakeshare.views:76] session 80 is waiting for shake. is_uploader: False
-[12/May/2013 03:32:02] DEBUG [shakeshare.views:76] session 81 is waiting for shake. is_uploader: False
-[12/May/2013 03:32:24] DEBUG [shakeshare.views:76] session 82 is waiting for shake. is_uploader: False
-[12/May/2013 03:33:07] DEBUG [shakeshare.views:76] session 83 is waiting for shake. is_uploader: False
-[12/May/2013 03:33:17] DEBUG [shakeshare.views:76] session 84 is waiting for shake. is_uploader: False
-[12/May/2013 03:35:02] DEBUG [shakeshare.views:197] []
-[12/May/2013 03:35:39] DEBUG [shakeshare.views:197] []
-[12/May/2013 03:37:18] DEBUG [shakeshare.views:197] []
-[12/May/2013 03:37:54] DEBUG [shakeshare.views:76] session 85 is waiting for shake. is_uploader: False
-[12/May/2013 03:38:06] DEBUG [shakeshare.views:197] [<Session: create_time: 2013-05-12 10:37:54+00:00, expire_time: 2013-05-12 13:37:54+00:00, session_id: 85, is_uploader: False, associated_sessions: null>]
-[12/May/2013 03:38:32] DEBUG [shakeshare.views:76] session 86 is waiting for shake. is_uploader: False
-[12/May/2013 03:38:42] DEBUG [shakeshare.views:197] [<Session: create_time: 2013-05-12 10:37:54+00:00, expire_time: 2013-05-12 13:37:54+00:00, session_id: 85, is_uploader: False, associated_sessions: null>, <Session: create_time: 2013-05-12 10:38:32+00:00, expire_time: 2013-05-12 13:38:32+00:00, session_id: 86, is_uploader: False, associated_sessions: null>]
-[12/May/2013 03:44:08] DEBUG [shakeshare.views:76] session 87 is waiting for shake. is_uploader: False
-[12/May/2013 03:44:34] DEBUG [shakeshare.views:76] session 88 is waiting for shake. is_uploader: False
-[12/May/2013 03:45:15] DEBUG [shakeshare.views:76] session 89 is waiting for shake. is_uploader: False
-[12/May/2013 03:45:47] DEBUG [shakeshare.views:197] [<Session: create_time: 2013-05-12 10:45:15+00:00, expire_time: 2013-05-12 13:45:15+00:00, session_id: 89, is_uploader: False, associated_sessions: null>]
-[12/May/2013 03:45:56] DEBUG [shakeshare.views:197] [<Session: create_time: 2013-05-12 10:45:15+00:00, expire_time: 2013-05-12 13:45:15+00:00, session_id: 89, is_uploader: False, associated_sessions: null>]
-[12/May/2013 03:47:43] DEBUG [shakeshare.views:76] session 90 is waiting for shake. is_uploader: False
-[12/May/2013 03:48:07] DEBUG [shakeshare.views:76] session 91 is waiting for shake. is_uploader: False
-[12/May/2013 03:48:40] DEBUG [shakeshare.views:76] session 93 is waiting for shake. is_uploader: False
-[12/May/2013 03:50:45] DEBUG [shakeshare.views:76] session 94 is waiting for shake. is_uploader: False
+[12/May/2013 23:59:09] DEBUG [shakeshare.views:80] session 326 is waiting for shake. is_uploader: False
+[12/May/2013 23:59:26] DEBUG [shakeshare.views:80] session 324 is waiting for shake. is_uploader: True
+[12/May/2013 23:59:26] DEBUG [shakeshare.views:212] now reading names
+[12/May/2013 23:59:26] DEBUG [shakeshare.views:220] [<Session: create_time: 2013-05-13 06:59:07+00:00, expire_time: 2013-05-13 09:59:07+00:00, session_id: 324, is_uploader: True, associated_sessions: null>, <Session: create_time: 2013-05-13 06:59:08+00:00, expire_time: 2013-05-13 09:59:08+00:00, session_id: 325, is_uploader: False, associated_sessions: null>, <Session: create_time: 2013-05-13 06:59:09+00:00, expire_time: 2013-05-13 09:59:09+00:00, session_id: 326, is_uploader: False, associated_sessions: null>]
+[12/May/2013 23:59:26] DEBUG [shakeshare.views:206] waiting for new sessions
+[12/May/2013 23:59:33] DEBUG [shakeshare.views:199] ======= session creation/update detected ========
+[12/May/2013 23:59:33] DEBUG [shakeshare.views:212] now reading names
+[12/May/2013 23:59:33] DEBUG [shakeshare.views:220] [<Session: create_time: 2013-05-13 06:59:07+00:00, expire_time: 2013-05-13 09:59:07+00:00, session_id: 324, is_uploader: True, associated_sessions: null>, <Session: create_time: 2013-05-13 06:59:08+00:00, expire_time: 2013-05-13 09:59:08+00:00, session_id: 325, is_uploader: False, associated_sessions: null>, <Session: create_time: 2013-05-13 06:59:09+00:00, expire_time: 2013-05-13 09:59:09+00:00, session_id: 326, is_uploader: False, associated_sessions: null>]
+[12/May/2013 23:59:33] DEBUG [shakeshare.views:206] waiting for new sessions
+[12/May/2013 23:59:34] DEBUG [shakeshare.views:199] ======= session creation/update detected ========
+[12/May/2013 23:59:34] DEBUG [shakeshare.views:212] now reading names
+[12/May/2013 23:59:34] DEBUG [shakeshare.views:220] [<Session: create_time: 2013-05-13 06:59:07+00:00, expire_time: 2013-05-13 09:59:07+00:00, session_id: 324, is_uploader: True, associated_sessions: null>, <Session: create_time: 2013-05-13 06:59:08+00:00, expire_time: 2013-05-13 09:59:08+00:00, session_id: 325, is_uploader: False, associated_sessions: null>, <Session: create_time: 2013-05-13 06:59:09+00:00, expire_time: 2013-05-13 09:59:09+00:00, session_id: 326, is_uploader: False, associated_sessions: null>]
+[12/May/2013 23:59:34] DEBUG [shakeshare.views:206] waiting for new sessions
+[12/May/2013 23:59:40] DEBUG [shakeshare.views:240] <WSGIRequest
+path:/setreceiver,
+GET:<QueryDict: {u'timestamp': [u'1368428387841']}>,
+POST:<QueryDict: {u'receiver_session_id_1': [u'326'], u'session_id': [u'324']}>,
+COOKIES:{},
+META:{'BYOBU_ACCENT': '#75507B',
+ 'BYOBU_BACKEND': 'tmux',
+ 'BYOBU_CONFIG_DIR': '/home/jiehou/.byobu',
+ 'BYOBU_DARK': 'black',
+ 'BYOBU_HIGHLIGHT': '#DD4814',
+ 'BYOBU_LIGHT': 'white',
+ 'BYOBU_PAGER': 'sensible-pager',
+ 'BYOBU_PREFIX': '/usr',
+ 'BYOBU_READLINK': 'readlink',
+ 'BYOBU_RUN_DIR': '/dev/shm/byobu-jiehou-pQuFcqtN',
+ 'BYOBU_SED': 'sed',
+ 'CONTENT_LENGTH': '40',
+ 'CONTENT_TYPE': 'application/x-www-form-urlencoded; charset=UTF-8',
+ 'CSRF_COOKIE': '0GHWGbErLa0hAmMXYla95BMT68VEtajZ',
+ 'DJANGO_SETTINGS_MODULE': 'shakeshare.settings',
+ 'GATEWAY_INTERFACE': 'CGI/1.1',
+ 'HOME': '/home/jiehou',
+ 'HTTP_ACCEPT': '*/*',
+ 'HTTP_ACCEPT_CHARSET': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+ 'HTTP_ACCEPT_ENCODING': 'gzip,deflate,sdch',
+ 'HTTP_ACCEPT_LANGUAGE': 'en-US,en;q=0.8',
+ 'HTTP_CONNECTION': 'keep-alive',
+ 'HTTP_HOST': 'shakeshare.net:8080',
+ 'HTTP_ORIGIN': 'http://shakeshare.net:8080',
+ 'HTTP_REFERER': 'http://shakeshare.net:8080/',
+ 'HTTP_USER_AGENT': 'Mozilla/5.0 (iPhone; CPU iPhone OS 6_1 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/26.0.1410.53 Mobile/10B143 Safari/8536.25',
+ 'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest',
+ 'IPREVIEW_HTML_HOME': 'http://jiehou.net/ipreview/',
+ 'IPREVIEW_SOURCE_HOME': '/home/jiehou/Dropbox/Plan Seattle/Interviews/',
+ 'JAVA_HOME': '/usr/lib/jvm/java-7-openjdk-amd64/',
+ 'LANG': 'en_US.UTF-8',
+ 'LOGNAME': 'jiehou',
+ 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:',
+ 'MAIL': '/var/mail/jiehou',
+ 'OLDPWD': '/projects/shakeshare/shakeshare',
+ 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
+ 'PATH_INFO': u'/setreceiver',
+ 'PWD': '/projects/shakeshare',
+ 'QUERY_STRING': 'timestamp=1368428387841',
+ 'REMOTE_ADDR': '24.18.233.23',
+ 'REMOTE_HOST': '',
+ 'REQUEST_METHOD': 'POST',
+ 'RUN_MAIN': 'true',
+ 'SCRIPT_NAME': u'',
+ 'SERVER_NAME': 'ip-10-249-9-200.us-west-2.compute.internal',
+ 'SERVER_PORT': '8080',
+ 'SERVER_PROTOCOL': 'HTTP/1.1',
+ 'SERVER_SOFTWARE': 'WSGIServer/0.1 Python/2.7.3',
+ 'SHELL': '/usr/bin/zsh',
+ 'SHLVL': '2',
+ 'SSH_CLIENT': '205.251.233.48 43064 22',
+ 'SSH_CONNECTION': '205.251.233.48 43064 10.249.9.200 22',
+ 'SSH_TTY': '/dev/pts/2',
+ 'TERM': 'screen',
+ 'TMUX': '/tmp/tmux-1001/default,1094,0',
+ 'TMUX_PANE': '%0',
+ 'TZ': 'America/Los_Angeles',
+ 'USER': 'jiehou',
+ 'XDG_SESSION_COOKIE': 'f33910f19b7abb192b83adbd000000bf-1368113067.243241-894817704',
+ '_': '/usr/bin/python',
+ 'wsgi.errors': <open file '<stderr>', mode 'w' at 0x7f60d5f4e270>,
+ 'wsgi.file_wrapper': <class wsgiref.util.FileWrapper at 0x14c5390>,
+ 'wsgi.input': <socket._fileobject object at 0x7f60c40b0ad0>,
+ 'wsgi.multiprocess': False,
+ 'wsgi.multithread': True,
+ 'wsgi.run_once': False,
+ 'wsgi.url_scheme': 'http',
+ 'wsgi.version': (1, 0)}>
+[12/May/2013 23:59:40] DEBUG [shakeshare.views:249] [326]
+[12/May/2013 23:59:40] DEBUG [shakeshare.views:199] ======= session creation/update detected ========
+[12/May/2013 23:59:40] DEBUG [shakeshare.views:212] now reading names
+[12/May/2013 23:59:40] DEBUG [shakeshare.views:220] [<Session: create_time: 2013-05-13 06:59:07+00:00, expire_time: 2013-05-13 09:59:07+00:00, session_id: 324, is_uploader: True, associated_sessions: [326]>, <Session: create_time: 2013-05-13 06:59:08+00:00, expire_time: 2013-05-13 09:59:08+00:00, session_id: 325, is_uploader: False, associated_sessions: null>, <Session: create_time: 2013-05-13 06:59:09+00:00, expire_time: 2013-05-13 09:59:09+00:00, session_id: 326, is_uploader: False, associated_sessions: null>]
+[12/May/2013 23:59:42] DEBUG [shakeshare.views:102] session 326 shaked. is_uploader False ,time: 1368428382 latitude 0 longtitude 0 accuracy 0
+[12/May/2013 23:59:42] DEBUG [shakeshare.views:117] session 326 a new shake object is made. id: 115 is_from_uploader False
+[12/May/2013 23:59:42] DEBUG [shakeshare.views:118] session 326 will try to find match
+[12/May/2013 23:59:43] DEBUG [shakeshare.views:102] session 325 shaked. is_uploader False ,time: 1368428382 latitude 0 longtitude 0 accuracy 0
+[12/May/2013 23:59:43] DEBUG [shakeshare.views:117] session 325 a new shake object is made. id: 116 is_from_uploader False
+[12/May/2013 23:59:43] DEBUG [shakeshare.views:118] session 325 will try to find match
+[12/May/2013 23:59:43] DEBUG [shakeshare.matching_tools:36] system is finding matching shakes for shake id 115, is_from_uploader False session: create_time: 2013-05-13 06:59:09+00:00, expire_time: 2013-05-13 09:59:09+00:00, session_id: 326, is_uploader: False, associated_sessions: null from 116 existing shake objects
+[12/May/2013 23:59:43] DEBUG [shakeshare.matching_tools:44] matching shakes found for shake 115: [<Shake: time: 2013-05-13 06:59:42+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 326, id: 115>, <Shake: time: 2013-05-13 06:59:42+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 325, id: 116>]
+[12/May/2013 23:59:43] DEBUG [shakeshare.matching_tools:47] starting session filtering
+[12/May/2013 23:59:43] DEBUG [shakeshare.views:131] session 326 with shake 115 finished finding matches. matching_shakes count: 2
+[12/May/2013 23:59:44] DEBUG [shakeshare.matching_tools:36] system is finding matching shakes for shake id 116, is_from_uploader False session: create_time: 2013-05-13 06:59:08+00:00, expire_time: 2013-05-13 09:59:08+00:00, session_id: 325, is_uploader: False, associated_sessions: null from 116 existing shake objects
+[12/May/2013 23:59:44] DEBUG [shakeshare.matching_tools:44] matching shakes found for shake 116: [<Shake: time: 2013-05-13 06:59:42+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 326, id: 115>, <Shake: time: 2013-05-13 06:59:42+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 325, id: 116>]
+[12/May/2013 23:59:44] DEBUG [shakeshare.matching_tools:47] starting session filtering
+[12/May/2013 23:59:44] DEBUG [shakeshare.views:131] session 325 with shake 116 finished finding matches. matching_shakes count: 2
+[12/May/2013 23:59:45] DEBUG [shakeshare.matching_tools:36] system is finding matching shakes for shake id 115, is_from_uploader False session: create_time: 2013-05-13 06:59:09+00:00, expire_time: 2013-05-13 09:59:09+00:00, session_id: 326, is_uploader: False, associated_sessions: null from 116 existing shake objects
+[12/May/2013 23:59:45] DEBUG [shakeshare.matching_tools:44] matching shakes found for shake 115: [<Shake: time: 2013-05-13 06:59:42+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 326, id: 115>, <Shake: time: 2013-05-13 06:59:42+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 325, id: 116>]
+[12/May/2013 23:59:45] DEBUG [shakeshare.matching_tools:47] starting session filtering
+[12/May/2013 23:59:45] DEBUG [shakeshare.views:131] session 326 with shake 115 finished finding matches. matching_shakes count: 2
+[12/May/2013 23:59:46] DEBUG [shakeshare.matching_tools:36] system is finding matching shakes for shake id 116, is_from_uploader False session: create_time: 2013-05-13 06:59:08+00:00, expire_time: 2013-05-13 09:59:08+00:00, session_id: 325, is_uploader: False, associated_sessions: null from 116 existing shake objects
+[12/May/2013 23:59:46] DEBUG [shakeshare.matching_tools:44] matching shakes found for shake 116: [<Shake: time: 2013-05-13 06:59:42+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 326, id: 115>, <Shake: time: 2013-05-13 06:59:42+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 325, id: 116>]
+[12/May/2013 23:59:46] DEBUG [shakeshare.matching_tools:47] starting session filtering
+[12/May/2013 23:59:46] DEBUG [shakeshare.views:131] session 325 with shake 116 finished finding matches. matching_shakes count: 2
+[12/May/2013 23:59:49] DEBUG [shakeshare.matching_tools:36] system is finding matching shakes for shake id 115, is_from_uploader False session: create_time: 2013-05-13 06:59:09+00:00, expire_time: 2013-05-13 09:59:09+00:00, session_id: 326, is_uploader: False, associated_sessions: null from 116 existing shake objects
+[12/May/2013 23:59:49] DEBUG [shakeshare.matching_tools:44] matching shakes found for shake 115: [<Shake: time: 2013-05-13 06:59:42+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 326, id: 115>, <Shake: time: 2013-05-13 06:59:42+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 325, id: 116>]
+[12/May/2013 23:59:49] DEBUG [shakeshare.matching_tools:47] starting session filtering
+[12/May/2013 23:59:49] DEBUG [shakeshare.views:131] session 326 with shake 115 finished finding matches. matching_shakes count: 2
+[12/May/2013 23:59:50] DEBUG [shakeshare.matching_tools:36] system is finding matching shakes for shake id 116, is_from_uploader False session: create_time: 2013-05-13 06:59:08+00:00, expire_time: 2013-05-13 09:59:08+00:00, session_id: 325, is_uploader: False, associated_sessions: null from 116 existing shake objects
+[12/May/2013 23:59:50] DEBUG [shakeshare.matching_tools:44] matching shakes found for shake 116: [<Shake: time: 2013-05-13 06:59:42+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 326, id: 115>, <Shake: time: 2013-05-13 06:59:42+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 325, id: 116>]
+[12/May/2013 23:59:50] DEBUG [shakeshare.matching_tools:47] starting session filtering
+[12/May/2013 23:59:50] DEBUG [shakeshare.views:131] session 325 with shake 116 finished finding matches. matching_shakes count: 2
+[13/May/2013 00:00:11] DEBUG [shakeshare.views:199] ======= session creation/update detected ========
+[13/May/2013 00:00:13] DEBUG [shakeshare.views:199] ======= session creation/update detected ========
+[13/May/2013 00:00:13] DEBUG [shakeshare.views:80] session 328 is waiting for shake. is_uploader: False
+[13/May/2013 00:00:13] DEBUG [shakeshare.views:199] ======= session creation/update detected ========
+[13/May/2013 00:00:13] DEBUG [shakeshare.views:80] session 329 is waiting for shake. is_uploader: False
+[13/May/2013 00:00:18] DEBUG [shakeshare.views:80] session 327 is waiting for shake. is_uploader: True
+[13/May/2013 00:00:18] DEBUG [shakeshare.views:212] now reading names
+[13/May/2013 00:00:18] DEBUG [shakeshare.views:220] [<Session: create_time: 2013-05-13 07:00:11+00:00, expire_time: 2013-05-13 10:00:11+00:00, session_id: 327, is_uploader: True, associated_sessions: null>, <Session: create_time: 2013-05-13 07:00:13+00:00, expire_time: 2013-05-13 10:00:13+00:00, session_id: 328, is_uploader: False, associated_sessions: null>, <Session: create_time: 2013-05-13 07:00:13+00:00, expire_time: 2013-05-13 10:00:13+00:00, session_id: 329, is_uploader: False, associated_sessions: null>]
+[13/May/2013 00:00:18] DEBUG [shakeshare.views:206] waiting for new sessions
+[13/May/2013 00:00:26] DEBUG [shakeshare.views:199] ======= session creation/update detected ========
+[13/May/2013 00:00:26] DEBUG [shakeshare.views:212] now reading names
+[13/May/2013 00:00:26] DEBUG [shakeshare.views:220] [<Session: create_time: 2013-05-13 07:00:11+00:00, expire_time: 2013-05-13 10:00:11+00:00, session_id: 327, is_uploader: True, associated_sessions: null>, <Session: create_time: 2013-05-13 07:00:13+00:00, expire_time: 2013-05-13 10:00:13+00:00, session_id: 328, is_uploader: False, associated_sessions: null>, <Session: create_time: 2013-05-13 07:00:13+00:00, expire_time: 2013-05-13 10:00:13+00:00, session_id: 329, is_uploader: False, associated_sessions: null>]
+[13/May/2013 00:00:26] DEBUG [shakeshare.views:206] waiting for new sessions
+[13/May/2013 00:00:26] DEBUG [shakeshare.views:199] ======= session creation/update detected ========
+[13/May/2013 00:00:26] DEBUG [shakeshare.views:212] now reading names
+[13/May/2013 00:00:26] DEBUG [shakeshare.views:220] [<Session: create_time: 2013-05-13 07:00:11+00:00, expire_time: 2013-05-13 10:00:11+00:00, session_id: 327, is_uploader: True, associated_sessions: null>, <Session: create_time: 2013-05-13 07:00:13+00:00, expire_time: 2013-05-13 10:00:13+00:00, session_id: 328, is_uploader: False, associated_sessions: null>, <Session: create_time: 2013-05-13 07:00:13+00:00, expire_time: 2013-05-13 10:00:13+00:00, session_id: 329, is_uploader: False, associated_sessions: null>]
+[13/May/2013 00:00:27] DEBUG [shakeshare.views:206] waiting for new sessions
+[13/May/2013 00:00:30] DEBUG [shakeshare.views:240] <WSGIRequest
+path:/setreceiver,
+GET:<QueryDict: {u'timestamp': [u'1368428438205']}>,
+POST:<QueryDict: {u'receiver_session_id_1': [u'329'], u'session_id': [u'327']}>,
+COOKIES:{},
+META:{'BYOBU_ACCENT': '#75507B',
+ 'BYOBU_BACKEND': 'tmux',
+ 'BYOBU_CONFIG_DIR': '/home/jiehou/.byobu',
+ 'BYOBU_DARK': 'black',
+ 'BYOBU_HIGHLIGHT': '#DD4814',
+ 'BYOBU_LIGHT': 'white',
+ 'BYOBU_PAGER': 'sensible-pager',
+ 'BYOBU_PREFIX': '/usr',
+ 'BYOBU_READLINK': 'readlink',
+ 'BYOBU_RUN_DIR': '/dev/shm/byobu-jiehou-pQuFcqtN',
+ 'BYOBU_SED': 'sed',
+ 'CONTENT_LENGTH': '40',
+ 'CONTENT_TYPE': 'application/x-www-form-urlencoded; charset=UTF-8',
+ 'CSRF_COOKIE': 'YO6yW794TY46G6nZF5U7V5607PBo1z8y',
+ 'DJANGO_SETTINGS_MODULE': 'shakeshare.settings',
+ 'GATEWAY_INTERFACE': 'CGI/1.1',
+ 'HOME': '/home/jiehou',
+ 'HTTP_ACCEPT': '*/*',
+ 'HTTP_ACCEPT_CHARSET': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+ 'HTTP_ACCEPT_ENCODING': 'gzip,deflate,sdch',
+ 'HTTP_ACCEPT_LANGUAGE': 'en-US,en;q=0.8',
+ 'HTTP_CONNECTION': 'keep-alive',
+ 'HTTP_HOST': 'shakeshare.net:8080',
+ 'HTTP_ORIGIN': 'http://shakeshare.net:8080',
+ 'HTTP_REFERER': 'http://shakeshare.net:8080/',
+ 'HTTP_USER_AGENT': 'Mozilla/5.0 (iPhone; CPU iPhone OS 6_1 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/26.0.1410.53 Mobile/10B143 Safari/8536.25',
+ 'HTTP_X_REQUESTED_WITH': 'XMLHttpRequest',
+ 'IPREVIEW_HTML_HOME': 'http://jiehou.net/ipreview/',
+ 'IPREVIEW_SOURCE_HOME': '/home/jiehou/Dropbox/Plan Seattle/Interviews/',
+ 'JAVA_HOME': '/usr/lib/jvm/java-7-openjdk-amd64/',
+ 'LANG': 'en_US.UTF-8',
+ 'LOGNAME': 'jiehou',
+ 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:',
+ 'MAIL': '/var/mail/jiehou',
+ 'OLDPWD': '/projects/shakeshare/shakeshare',
+ 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games',
+ 'PATH_INFO': u'/setreceiver',
+ 'PWD': '/projects/shakeshare',
+ 'QUERY_STRING': 'timestamp=1368428438205',
+ 'REMOTE_ADDR': '24.18.233.23',
+ 'REMOTE_HOST': '',
+ 'REQUEST_METHOD': 'POST',
+ 'RUN_MAIN': 'true',
+ 'SCRIPT_NAME': u'',
+ 'SERVER_NAME': 'ip-10-249-9-200.us-west-2.compute.internal',
+ 'SERVER_PORT': '8080',
+ 'SERVER_PROTOCOL': 'HTTP/1.1',
+ 'SERVER_SOFTWARE': 'WSGIServer/0.1 Python/2.7.3',
+ 'SHELL': '/usr/bin/zsh',
+ 'SHLVL': '2',
+ 'SSH_CLIENT': '205.251.233.48 43064 22',
+ 'SSH_CONNECTION': '205.251.233.48 43064 10.249.9.200 22',
+ 'SSH_TTY': '/dev/pts/2',
+ 'TERM': 'screen',
+ 'TMUX': '/tmp/tmux-1001/default,1094,0',
+ 'TMUX_PANE': '%0',
+ 'TZ': 'America/Los_Angeles',
+ 'USER': 'jiehou',
+ 'XDG_SESSION_COOKIE': 'f33910f19b7abb192b83adbd000000bf-1368113067.243241-894817704',
+ '_': '/usr/bin/python',
+ 'wsgi.errors': <open file '<stderr>', mode 'w' at 0x7f60d5f4e270>,
+ 'wsgi.file_wrapper': <class wsgiref.util.FileWrapper at 0x14c5390>,
+ 'wsgi.input': <socket._fileobject object at 0x7f60c40d7ed0>,
+ 'wsgi.multiprocess': False,
+ 'wsgi.multithread': True,
+ 'wsgi.run_once': False,
+ 'wsgi.url_scheme': 'http',
+ 'wsgi.version': (1, 0)}>
+[13/May/2013 00:00:30] DEBUG [shakeshare.views:249] [329]
+[13/May/2013 00:00:30] DEBUG [shakeshare.views:199] ======= session creation/update detected ========
+[13/May/2013 00:00:30] DEBUG [shakeshare.views:212] now reading names
+[13/May/2013 00:00:30] DEBUG [shakeshare.views:220] [<Session: create_time: 2013-05-13 07:00:11+00:00, expire_time: 2013-05-13 10:00:11+00:00, session_id: 327, is_uploader: True, associated_sessions: [329]>, <Session: create_time: 2013-05-13 07:00:13+00:00, expire_time: 2013-05-13 10:00:13+00:00, session_id: 328, is_uploader: False, associated_sessions: null>, <Session: create_time: 2013-05-13 07:00:13+00:00, expire_time: 2013-05-13 10:00:13+00:00, session_id: 329, is_uploader: False, associated_sessions: null>]
+[13/May/2013 00:00:34] DEBUG [shakeshare.views:102] session 327 shaked. is_uploader True ,time: 1368428434 latitude 0 longtitude 0 accuracy 0
+[13/May/2013 00:00:34] DEBUG [shakeshare.views:117] session 327 a new shake object is made. id: 117 is_from_uploader True
+[13/May/2013 00:00:34] DEBUG [shakeshare.views:118] session 327 will try to find match
+[13/May/2013 00:00:34] DEBUG [shakeshare.views:102] session 329 shaked. is_uploader False ,time: 1368428434 latitude 0 longtitude 0 accuracy 0
+[13/May/2013 00:00:34] DEBUG [shakeshare.views:117] session 329 a new shake object is made. id: 118 is_from_uploader False
+[13/May/2013 00:00:34] DEBUG [shakeshare.views:118] session 329 will try to find match
+[13/May/2013 00:00:34] DEBUG [shakeshare.views:102] session 328 shaked. is_uploader False ,time: 1368428434 latitude 0 longtitude 0 accuracy 0
+[13/May/2013 00:00:34] DEBUG [shakeshare.views:117] session 328 a new shake object is made. id: 119 is_from_uploader False
+[13/May/2013 00:00:34] DEBUG [shakeshare.views:118] session 328 will try to find match
+[13/May/2013 00:00:35] DEBUG [shakeshare.matching_tools:36] system is finding matching shakes for shake id 117, is_from_uploader True session: create_time: 2013-05-13 07:00:11+00:00, expire_time: 2013-05-13 10:00:11+00:00, session_id: 327, is_uploader: True, associated_sessions: [329] from 119 existing shake objects
+[13/May/2013 00:00:35] DEBUG [shakeshare.matching_tools:44] matching shakes found for shake 117: [<Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: True, session_id: 327, id: 117>, <Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 329, id: 118>, <Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 328, id: 119>]
+[13/May/2013 00:00:35] DEBUG [shakeshare.matching_tools:47] starting session filtering
+[13/May/2013 00:00:35] DEBUG [shakeshare.views:131] session 327 with shake 117 finished finding matches. matching_shakes count: 3
+[13/May/2013 00:00:35] DEBUG [shakeshare.views:138] session 327 matches a uploader-session 327 with shake 117, files count: 1
+[13/May/2013 00:00:35] DEBUG [shakeshare.matching_tools:36] system is finding matching shakes for shake id 118, is_from_uploader False session: create_time: 2013-05-13 07:00:13+00:00, expire_time: 2013-05-13 10:00:13+00:00, session_id: 329, is_uploader: False, associated_sessions: null from 119 existing shake objects
+[13/May/2013 00:00:35] DEBUG [shakeshare.matching_tools:44] matching shakes found for shake 118: [<Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: True, session_id: 327, id: 117>, <Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 329, id: 118>, <Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 328, id: 119>]
+[13/May/2013 00:00:35] DEBUG [shakeshare.matching_tools:47] starting session filtering
+[13/May/2013 00:00:35] DEBUG [shakeshare.matching_tools:52] among matched shakes, we found a uploader-shake 117, which allows these receiver-sessions: [329]
+[13/May/2013 00:00:35] DEBUG [shakeshare.views:131] session 329 with shake 118 finished finding matches. matching_shakes count: 3
+[13/May/2013 00:00:35] DEBUG [shakeshare.views:138] session 329 matches a uploader-session 329 with shake 117, files count: 1
+[13/May/2013 00:00:35] DEBUG [shakeshare.matching_tools:36] system is finding matching shakes for shake id 119, is_from_uploader False session: create_time: 2013-05-13 07:00:13+00:00, expire_time: 2013-05-13 10:00:13+00:00, session_id: 328, is_uploader: False, associated_sessions: null from 119 existing shake objects
+[13/May/2013 00:00:35] DEBUG [shakeshare.matching_tools:44] matching shakes found for shake 119: [<Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: True, session_id: 327, id: 117>, <Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 329, id: 118>, <Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 328, id: 119>]
+[13/May/2013 00:00:35] DEBUG [shakeshare.matching_tools:47] starting session filtering
+[13/May/2013 00:00:35] DEBUG [shakeshare.matching_tools:52] among matched shakes, we found a uploader-shake 117, which allows these receiver-sessions: [329]
+[13/May/2013 00:00:35] DEBUG [shakeshare.matching_tools:54] session 328 is not in the list. shake removed.
+[13/May/2013 00:00:35] DEBUG [shakeshare.views:131] session 328 with shake 119 finished finding matches. matching_shakes count: 2
+[13/May/2013 00:00:37] DEBUG [shakeshare.matching_tools:36] system is finding matching shakes for shake id 119, is_from_uploader False session: create_time: 2013-05-13 07:00:13+00:00, expire_time: 2013-05-13 10:00:13+00:00, session_id: 328, is_uploader: False, associated_sessions: null from 119 existing shake objects
+[13/May/2013 00:00:37] DEBUG [shakeshare.matching_tools:44] matching shakes found for shake 119: [<Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: True, session_id: 327, id: 117>, <Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 329, id: 118>, <Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 328, id: 119>]
+[13/May/2013 00:00:37] DEBUG [shakeshare.matching_tools:47] starting session filtering
+[13/May/2013 00:00:37] DEBUG [shakeshare.matching_tools:52] among matched shakes, we found a uploader-shake 117, which allows these receiver-sessions: [329]
+[13/May/2013 00:00:37] DEBUG [shakeshare.matching_tools:54] session 328 is not in the list. shake removed.
+[13/May/2013 00:00:37] DEBUG [shakeshare.views:131] session 328 with shake 119 finished finding matches. matching_shakes count: 2
+[13/May/2013 00:00:41] DEBUG [shakeshare.matching_tools:36] system is finding matching shakes for shake id 119, is_from_uploader False session: create_time: 2013-05-13 07:00:13+00:00, expire_time: 2013-05-13 10:00:13+00:00, session_id: 328, is_uploader: False, associated_sessions: null from 119 existing shake objects
+[13/May/2013 00:00:41] DEBUG [shakeshare.matching_tools:44] matching shakes found for shake 119: [<Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: True, session_id: 327, id: 117>, <Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 329, id: 118>, <Shake: time: 2013-05-13 07:00:34+00:00 ,latitude: 0.0, logitude: 0.0, accuracy: 0.0, is_from_uploader: False, session_id: 328, id: 119>]
+[13/May/2013 00:00:41] DEBUG [shakeshare.matching_tools:47] starting session filtering
+[13/May/2013 00:00:41] DEBUG [shakeshare.matching_tools:52] among matched shakes, we found a uploader-shake 117, which allows these receiver-sessions: [329]
+[13/May/2013 00:00:41] DEBUG [shakeshare.matching_tools:54] session 328 is not in the list. shake removed.
+[13/May/2013 00:00:41] DEBUG [shakeshare.views:131] session 328 with shake 119 finished finding matches. matching_shakes count: 2
